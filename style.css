@@ -1,0 +1,24 @@
+/* HerGrowth Custom Styles */
+/* Tailwind CSS is loaded via CDN in index.html */
+/* You can add custom styles here that complement Tailwind */
+
+/* Scrolling Ticker Animation */
+.marquee {
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.marquee-content {
+    display: inline-flex;
+    animation: scroll-left 20s linear infinite;
+}
+
+@keyframes scroll-left {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
