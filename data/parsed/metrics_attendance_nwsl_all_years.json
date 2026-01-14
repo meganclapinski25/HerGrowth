@@ -1,0 +1,222 @@
+[
+  {
+    "sport": "soccer",
+    "level": "NWSL",
+    "season_year": 2014,
+    "team_name": "Portland Thorns FC",
+    "metric_name": "attendance_home_total",
+    "metric_value": 160341,
+    "unit": "people",
+    "source": "Wikipedia",
+    "source_url": "https://en.wikipedia.org/wiki/2014_National_Women%27s_Soccer_League_season"
+  },
+  {
+    "sport": "soccer",
+    "level": "NWSL",
+    "season_year": 2014,
+    "team_name": "Portland Thorns FC",
+    "metric_name": "attendance_home_avg",
+    "metric_value": 13362,
+    "unit": "people",
+    "source": "Wikipedia",
+    "source_url": "https://en.wikipedia.org/wiki/2014_National_Women%27s_Soccer_League_season"
+  },
+  {
+    "sport": "soccer",
+    "level": "NWSL",
+    "season_year": 2014,
+    "team_name": "Houston Dash",
+    "metric_name": "attendance_home_total",
+    "metric_value": 55801,
+    "unit": "people",
+    "source": "Wikipedia",
+    "source_url": "https://en.wikipedia.org/wiki/2014_National_Women%27s_Soccer_League_season"
+  },
+  {
+    "sport": "soccer",
+    "level": "NWSL",
+    "season_year": 2014,
+    "team_name": "Houston Dash",
+    "metric_name": "attendance_home_avg",
+    "metric_value": 4650,
+    "unit": "people",
+    "source": "Wikipedia",
+    "source_url": "https://en.wikipedia.org/wiki/2014_National_Women%27s_Soccer_League_season"
+  },
+  {
+    "sport": "soccer",
+    "level": "NWSL",
+    "season_year": 2014,
+    "team_name": "Seattle Reign FC",
+    "metric_name": "attendance_home_total",
+    "metric_value": 43996,
+    "unit": "people",
+    "source": "Wikipedia",
+    "source_url": "https://en.wikipedia.org/wiki/2014_National_Women%27s_Soccer_League_season"
+  },
+  {
+    "sport": "soccer",
+    "level": "NWSL",
+    "season_year": 2014,
+    "team_name": "Seattle Reign FC",
+    "metric_name": "attendance_home_avg",
+    "metric_value": 3666,
+    "unit": "people",
+    "source": "Wikipedia",
+    "source_url": "https://en.wikipedia.org/wiki/2014_National_Women%27s_Soccer_League_season"
+  },
+  {
+    "sport": "soccer",
+    "level": "NWSL",
+    "season_year": 2014,
+    "team_name": "Washington Spirit",
+    "metric_name": "attendance_home_total",
+    "metric_value": 40019,
+    "unit": "people",
+    "source": "Wikipedia",
+    "source_url": "https://en.wikipedia.org/wiki/2014_National_Women%27s_Soccer_League_season"
+  },
+  {
+    "sport": "soccer",
+    "level": "NWSL",
+    "season_year": 2014,
+    "team_name": "Washington Spirit",
+    "metric_name": "attendance_home_avg",
+    "metric_value": 3335,
+    "unit": "people",
+    "source": "Wikipedia",
+    "source_url": "https://en.wikipedia.org/wiki/2014_National_Women%27s_Soccer_League_season"
+  },
+  {
+    "sport": "soccer",
+    "level": "NWSL",
+    "season_year": 2014,
+    "team_name": "Western New York Flash",
+    "metric_name": "attendance_home_total",
+    "metric_value": 38125,
+    "unit": "people",
+    "source": "Wikipedia",
+    "source_url": "https://en.wikipedia.org/wiki/2014_National_Women%27s_Soccer_League_season"
+  },
+  {
+    "sport": "soccer",
+    "level": "NWSL",
+    "season_year": 2014,
+    "team_name": "Western New York Flash",
+    "metric_name": "attendance_home_avg",
+    "metric_value": 3177,
+    "unit": "people",
+    "source": "Wikipedia",
+    "source_url": "https://en.wikipedia.org/wiki/2014_National_Women%27s_Soccer_League_season"
+  },
+  {
+    "sport": "soccer",
+    "level": "NWSL",
+    "season_year": 2014,
+    "team_name": "Chicago Red Stars",
+    "metric_name": "attendance_home_total",
+    "metric_value": 35393,
+    "unit": "people",
+    "source": "Wikipedia",
+    "source_url": "https://en.wikipedia.org/wiki/2014_National_Women%27s_Soccer_League_season"
+  },
+  {
+    "sport": "soccer",
+    "level": "NWSL",
+    "season_year": 2014,
+    "team_name": "Chicago Red Stars",
+    "metric_name": "attendance_home_avg",
+    "metric_value": 2949,
+    "unit": "people",
+    "source": "Wikipedia",
+    "source_url": "https://en.wikipedia.org/wiki/2014_National_Women%27s_Soccer_League_season"
+  },
+  {
+    "sport": "soccer",
+    "level": "NWSL",
+    "season_year": 2014,
+    "team_name": "Chicago Red Stars",
+    "metric_name": "attendance_home_total",
+    "metric_value": 35393,
+    "unit": "people",
+    "source": "Wikipedia",
+    "source_url": "https://en.wikipedia.org/wiki/2014_National_Women%27s_Soccer_League_season"
+  },
+  {
+    "sport": "soccer",
+    "level": "NWSL",
+    "season_year": 2014,
+    "team_name": "Chicago Red Stars",
+    "metric_name": "attendance_home_avg",
+    "metric_value": 2949,
+    "unit": "people",
+    "source": "Wikipedia",
+    "source_url": "https://en.wikipedia.org/wiki/2014_National_Women%27s_Soccer_League_season"
+  },
+  {
+    "sport": "soccer",
+    "level": "NWSL",
+    "season_year": 2014,
+    "team_name": "Boston Breakers",
+    "metric_name": "attendance_home_total",
+    "metric_value": 29248,
+    "unit": "people",
+    "source": "Wikipedia",
+    "source_url": "https://en.wikipedia.org/wiki/2014_National_Women%27s_Soccer_League_season"
+  },
+  {
+    "sport": "soccer",
+    "level": "NWSL",
+    "season_year": 2014,
+    "team_name": "Boston Breakers",
+    "metric_name": "attendance_home_avg",
+    "metric_value": 2437,
+    "unit": "people",
+    "source": "Wikipedia",
+    "source_url": "https://en.wikipedia.org/wiki/2014_National_Women%27s_Soccer_League_season"
+  },
+  {
+    "sport": "soccer",
+    "level": "NWSL",
+    "season_year": 2014,
+    "team_name": "FC Kansas City",
+    "metric_name": "attendance_home_total",
+    "metric_value": 24215,
+    "unit": "people",
+    "source": "Wikipedia",
+    "source_url": "https://en.wikipedia.org/wiki/2014_National_Women%27s_Soccer_League_season"
+  },
+  {
+    "sport": "soccer",
+    "level": "NWSL",
+    "season_year": 2014,
+    "team_name": "FC Kansas City",
+    "metric_name": "attendance_home_avg",
+    "metric_value": 2018,
+    "unit": "people",
+    "source": "Wikipedia",
+    "source_url": "https://en.wikipedia.org/wiki/2014_National_Women%27s_Soccer_League_season"
+  },
+  {
+    "sport": "soccer",
+    "level": "NWSL",
+    "season_year": 2014,
+    "team_name": "Sky Blue FC",
+    "metric_name": "attendance_home_total",
+    "metric_value": 19682,
+    "unit": "people",
+    "source": "Wikipedia",
+    "source_url": "https://en.wikipedia.org/wiki/2014_National_Women%27s_Soccer_League_season"
+  },
+  {
+    "sport": "soccer",
+    "level": "NWSL",
+    "season_year": 2014,
+    "team_name": "Sky Blue FC",
+    "metric_name": "attendance_home_avg",
+    "metric_value": 1640,
+    "unit": "people",
+    "source": "Wikipedia",
+    "source_url": "https://en.wikipedia.org/wiki/2014_National_Women%27s_Soccer_League_season"
+  }
+]
