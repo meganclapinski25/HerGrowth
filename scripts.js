@@ -18,11 +18,11 @@ document.addEventListener('DOMContentLoaded', function() {
             // Enable Go button
             goButton.disabled = false;
             goButton.classList.remove('bg-gray-300', 'text-gray-500', 'opacity-50', 'cursor-not-allowed');
-            goButton.classList.add('bg-green-600', 'text-white', 'hover:bg-green-700', 'hover:shadow-xl', 'transform', 'hover:scale-105', 'cursor-pointer', 'opacity-100');
+            goButton.classList.add('bg-gradient-to-r', 'from-green-600', 'to-emerald-600', 'text-white', 'hover:from-green-700', 'hover:to-emerald-700', 'hover:shadow-2xl', 'transform', 'hover:scale-105', 'cursor-pointer', 'opacity-100', 'shadow-xl');
         } else {
             // Disable Go button
             goButton.disabled = true;
-            goButton.classList.remove('bg-green-600', 'text-white', 'hover:bg-green-700', 'hover:shadow-xl', 'transform', 'hover:scale-105', 'cursor-pointer', 'opacity-100');
+            goButton.classList.remove('bg-gradient-to-r', 'from-green-600', 'to-emerald-600', 'text-white', 'hover:from-green-700', 'hover:to-emerald-700', 'hover:shadow-2xl', 'transform', 'hover:scale-105', 'cursor-pointer', 'opacity-100', 'shadow-xl');
             goButton.classList.add('bg-gray-300', 'text-gray-500', 'opacity-50', 'cursor-not-allowed');
         }
     }
