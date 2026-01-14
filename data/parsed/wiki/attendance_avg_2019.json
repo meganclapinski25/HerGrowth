@@ -1,0 +1,101 @@
+[
+  {
+    "sport": "soccer",
+    "level": "NWSL",
+    "season_year": 2019,
+    "team_name": "CHI",
+    "metric_name": "attendance_home_avg",
+    "metric_value": 54510,
+    "unit": "people",
+    "source": "Wikipedia",
+    "source_url": "https://en.wikipedia.org/wiki/National_Women%27s_Soccer_League_attendance"
+  },
+  {
+    "sport": "soccer",
+    "level": "NWSL",
+    "season_year": 2019,
+    "team_name": "HOU",
+    "metric_name": "attendance_home_avg",
+    "metric_value": 3615,
+    "unit": "people",
+    "source": "Wikipedia",
+    "source_url": "https://en.wikipedia.org/wiki/National_Women%27s_Soccer_League_attendance"
+  },
+  {
+    "sport": "soccer",
+    "level": "NWSL",
+    "season_year": 2019,
+    "team_name": "NC",
+    "metric_name": "attendance_home_avg",
+    "metric_value": 5875,
+    "unit": "people",
+    "source": "Wikipedia",
+    "source_url": "https://en.wikipedia.org/wiki/National_Women%27s_Soccer_League_attendance"
+  },
+  {
+    "sport": "soccer",
+    "level": "NWSL",
+    "season_year": 2019,
+    "team_name": "NJY",
+    "metric_name": "attendance_home_avg",
+    "metric_value": 33380,
+    "unit": "people",
+    "source": "Wikipedia",
+    "source_url": "https://en.wikipedia.org/wiki/National_Women%27s_Soccer_League_attendance"
+  },
+  {
+    "sport": "soccer",
+    "level": "NWSL",
+    "season_year": 2019,
+    "team_name": "ORL",
+    "metric_name": "attendance_home_avg",
+    "metric_value": 5565,
+    "unit": "people",
+    "source": "Wikipedia",
+    "source_url": "https://en.wikipedia.org/wiki/National_Women%27s_Soccer_League_attendance"
+  },
+  {
+    "sport": "soccer",
+    "level": "NWSL",
+    "season_year": 2019,
+    "team_name": "POR",
+    "metric_name": "attendance_home_avg",
+    "metric_value": 200980,
+    "unit": "people",
+    "source": "Wikipedia",
+    "source_url": "https://en.wikipedia.org/wiki/National_Women%27s_Soccer_League_attendance"
+  },
+  {
+    "sport": "soccer",
+    "level": "NWSL",
+    "season_year": 2019,
+    "team_name": "RGN",
+    "metric_name": "attendance_home_avg",
+    "metric_value": 52130,
+    "unit": "people",
+    "source": "Wikipedia",
+    "source_url": "https://en.wikipedia.org/wiki/National_Women%27s_Soccer_League_attendance"
+  },
+  {
+    "sport": "soccer",
+    "level": "NWSL",
+    "season_year": 2019,
+    "team_name": "UTA",
+    "metric_name": "attendance_home_avg",
+    "metric_value": 10774,
+    "unit": "people",
+    "source": "Wikipedia",
+    "source_url": "https://en.wikipedia.org/wiki/National_Women%27s_Soccer_League_attendance"
+  },
+  {
+    "sport": "soccer",
+    "level": "NWSL",
+    "season_year": 2019,
+    "team_name": "WAS",
+    "metric_name": "attendance_home_avg",
+    "metric_value": 61050,
+    "unit": "people",
+    "source": "Wikipedia",
+    "source_url": "https://en.wikipedia.org/wiki/National_Women%27s_Soccer_League_attendance"
+  }
+]

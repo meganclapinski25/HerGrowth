@@ -1,0 +1,156 @@
+[
+  {
+    "sport": "soccer",
+    "level": "NWSL",
+    "season_year": 2024,
+    "team_name": "BAY",
+    "metric_name": "attendance_home_avg",
+    "metric_value": 13617,
+    "unit": "people",
+    "source": "Wikipedia",
+    "source_url": "https://en.wikipedia.org/wiki/National_Women%27s_Soccer_League_attendance"
+  },
+  {
+    "sport": "soccer",
+    "level": "NWSL",
+    "season_year": 2024,
+    "team_name": "CHI",
+    "metric_name": "attendance_home_avg",
+    "metric_value": 71560,
+    "unit": "people",
+    "source": "Wikipedia",
+    "source_url": "https://en.wikipedia.org/wiki/National_Women%27s_Soccer_League_attendance"
+  },
+  {
+    "sport": "soccer",
+    "level": "NWSL",
+    "season_year": 2024,
+    "team_name": "HOU",
+    "metric_name": "attendance_home_avg",
+    "metric_value": 6194,
+    "unit": "people",
+    "source": "Wikipedia",
+    "source_url": "https://en.wikipedia.org/wiki/National_Women%27s_Soccer_League_attendance"
+  },
+  {
+    "sport": "soccer",
+    "level": "NWSL",
+    "season_year": 2024,
+    "team_name": "KCC",
+    "metric_name": "attendance_home_avg",
+    "metric_value": 11500,
+    "unit": "people",
+    "source": "Wikipedia",
+    "source_url": "https://en.wikipedia.org/wiki/National_Women%27s_Soccer_League_attendance"
+  },
+  {
+    "sport": "soccer",
+    "level": "NWSL",
+    "season_year": 2024,
+    "team_name": "LA",
+    "metric_name": "attendance_home_avg",
+    "metric_value": 19313,
+    "unit": "people",
+    "source": "Wikipedia",
+    "source_url": "https://en.wikipedia.org/wiki/National_Women%27s_Soccer_League_attendance"
+  },
+  {
+    "sport": "soccer",
+    "level": "NWSL",
+    "season_year": 2024,
+    "team_name": "LOU",
+    "metric_name": "attendance_home_avg",
+    "metric_value": 6208,
+    "unit": "people",
+    "source": "Wikipedia",
+    "source_url": "https://en.wikipedia.org/wiki/National_Women%27s_Soccer_League_attendance"
+  },
+  {
+    "sport": "soccer",
+    "level": "NWSL",
+    "season_year": 2024,
+    "team_name": "NC",
+    "metric_name": "attendance_home_avg",
+    "metric_value": 6362,
+    "unit": "people",
+    "source": "Wikipedia",
+    "source_url": "https://en.wikipedia.org/wiki/National_Women%27s_Soccer_League_attendance"
+  },
+  {
+    "sport": "soccer",
+    "level": "NWSL",
+    "season_year": 2024,
+    "team_name": "NJY",
+    "metric_name": "attendance_home_avg",
+    "metric_value": 85890,
+    "unit": "people",
+    "source": "Wikipedia",
+    "source_url": "https://en.wikipedia.org/wiki/National_Women%27s_Soccer_League_attendance"
+  },
+  {
+    "sport": "soccer",
+    "level": "NWSL",
+    "season_year": 2024,
+    "team_name": "ORL",
+    "metric_name": "attendance_home_avg",
+    "metric_value": 8340,
+    "unit": "people",
+    "source": "Wikipedia",
+    "source_url": "https://en.wikipedia.org/wiki/National_Women%27s_Soccer_League_attendance"
+  },
+  {
+    "sport": "soccer",
+    "level": "NWSL",
+    "season_year": 2024,
+    "team_name": "POR",
+    "metric_name": "attendance_home_avg",
+    "metric_value": 187250,
+    "unit": "people",
+    "source": "Wikipedia",
+    "source_url": "https://en.wikipedia.org/wiki/National_Women%27s_Soccer_League_attendance"
+  },
+  {
+    "sport": "soccer",
+    "level": "NWSL",
+    "season_year": 2024,
+    "team_name": "RGN",
+    "metric_name": "attendance_home_avg",
+    "metric_value": 85030,
+    "unit": "people",
+    "source": "Wikipedia",
+    "source_url": "https://en.wikipedia.org/wiki/National_Women%27s_Soccer_League_attendance"
+  },
+  {
+    "sport": "soccer",
+    "level": "NWSL",
+    "season_year": 2024,
+    "team_name": "SD",
+    "metric_name": "attendance_home_avg",
+    "metric_value": 19575,
+    "unit": "people",
+    "source": "Wikipedia",
+    "source_url": "https://en.wikipedia.org/wiki/National_Women%27s_Soccer_League_attendance"
+  },
+  {
+    "sport": "soccer",
+    "level": "NWSL",
+    "season_year": 2024,
+    "team_name": "UTA",
+    "metric_name": "attendance_home_avg",
+    "metric_value": 10304,
+    "unit": "people",
+    "source": "Wikipedia",
+    "source_url": "https://en.wikipedia.org/wiki/National_Women%27s_Soccer_League_attendance"
+  },
+  {
+    "sport": "soccer",
+    "level": "NWSL",
+    "season_year": 2024,
+    "team_name": "WAS",
+    "metric_name": "attendance_home_avg",
+    "metric_value": 139370,
+    "unit": "people",
+    "source": "Wikipedia",
+    "source_url": "https://en.wikipedia.org/wiki/National_Women%27s_Soccer_League_attendance"
+  }
+]

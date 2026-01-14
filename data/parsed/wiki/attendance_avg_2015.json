@@ -1,0 +1,101 @@
+[
+  {
+    "sport": "soccer",
+    "level": "NWSL",
+    "season_year": 2015,
+    "team_name": "BOS",
+    "metric_name": "attendance_home_avg",
+    "metric_value": 2863,
+    "unit": "people",
+    "source": "Wikipedia",
+    "source_url": "https://en.wikipedia.org/wiki/National_Women%27s_Soccer_League_attendance"
+  },
+  {
+    "sport": "soccer",
+    "level": "NWSL",
+    "season_year": 2015,
+    "team_name": "CHI",
+    "metric_name": "attendance_home_avg",
+    "metric_value": 42100,
+    "unit": "people",
+    "source": "Wikipedia",
+    "source_url": "https://en.wikipedia.org/wiki/National_Women%27s_Soccer_League_attendance"
+  },
+  {
+    "sport": "soccer",
+    "level": "NWSL",
+    "season_year": 2015,
+    "team_name": "FCKC",
+    "metric_name": "attendance_home_avg",
+    "metric_value": 3091,
+    "unit": "people",
+    "source": "Wikipedia",
+    "source_url": "https://en.wikipedia.org/wiki/National_Women%27s_Soccer_League_attendance"
+  },
+  {
+    "sport": "soccer",
+    "level": "NWSL",
+    "season_year": 2015,
+    "team_name": "HOU",
+    "metric_name": "attendance_home_avg",
+    "metric_value": 6413,
+    "unit": "people",
+    "source": "Wikipedia",
+    "source_url": "https://en.wikipedia.org/wiki/National_Women%27s_Soccer_League_attendance"
+  },
+  {
+    "sport": "soccer",
+    "level": "NWSL",
+    "season_year": 2015,
+    "team_name": "NJY",
+    "metric_name": "attendance_home_avg",
+    "metric_value": 21890,
+    "unit": "people",
+    "source": "Wikipedia",
+    "source_url": "https://en.wikipedia.org/wiki/National_Women%27s_Soccer_League_attendance"
+  },
+  {
+    "sport": "soccer",
+    "level": "NWSL",
+    "season_year": 2015,
+    "team_name": "POR",
+    "metric_name": "attendance_home_avg",
+    "metric_value": 156390,
+    "unit": "people",
+    "source": "Wikipedia",
+    "source_url": "https://en.wikipedia.org/wiki/National_Women%27s_Soccer_League_attendance"
+  },
+  {
+    "sport": "soccer",
+    "level": "NWSL",
+    "season_year": 2015,
+    "team_name": "RGN",
+    "metric_name": "attendance_home_avg",
+    "metric_value": 40600,
+    "unit": "people",
+    "source": "Wikipedia",
+    "source_url": "https://en.wikipedia.org/wiki/National_Women%27s_Soccer_League_attendance"
+  },
+  {
+    "sport": "soccer",
+    "level": "NWSL",
+    "season_year": 2015,
+    "team_name": "WAS",
+    "metric_name": "attendance_home_avg",
+    "metric_value": 40870,
+    "unit": "people",
+    "source": "Wikipedia",
+    "source_url": "https://en.wikipedia.org/wiki/National_Women%27s_Soccer_League_attendance"
+  },
+  {
+    "sport": "soccer",
+    "level": "NWSL",
+    "season_year": 2015,
+    "team_name": "WNY",
+    "metric_name": "attendance_home_avg",
+    "metric_value": 2860,
+    "unit": "people",
+    "source": "Wikipedia",
+    "source_url": "https://en.wikipedia.org/wiki/National_Women%27s_Soccer_League_attendance"
+  }
+]
