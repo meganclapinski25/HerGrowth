@@ -2,6 +2,11 @@
 /* Tailwind CSS is loaded via CDN in index.html */
 /* You can add custom styles here that complement Tailwind */
 
+/* Smooth scrolling */
+html {
+    scroll-behavior: smooth;
+}
+
 /* Pill Button Drop-Down Animation with Recoil */
 .pill-button {
     opacity: 0;
@@ -57,10 +62,11 @@
     }
 }
 
-/* Selected button state (green) */
+/* Selected button state */
 .pill-button.selected {
-    background-color: #10b981;
+    background-color: #6366f1;
     color: white;
     transform: scale(1.05);
+    box-shadow: 0 10px 15px -3px rgba(99, 102, 241, 0.3), 0 4px 6px -2px rgba(99, 102, 241, 0.2);
 }
 

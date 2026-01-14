@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Women's Soccer - Professional | HerGrowth</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'sans': ['Poppins', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="min-h-screen bg-gray-100">
+    
+
+    <!-- Main Content Container -->
+    <div class="container mx-auto px-6 py-8 max-w-7xl">
+        <!-- Header Title -->
+        <header class="bg-gray-200 rounded-lg py-6 mb-8">
+            <h1 class="text-3xl md:text-4xl font-bold text-gray-800 text-center">HerGrowth</h1>
+        </header>
+
+        <!-- Content Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+            <!-- Top Left: Description Box -->
+            <div class="bg-gray-200 rounded-lg p-6 min-h-[200px] flex items-center">
+                <p class="text-gray-700 text-lg leading-relaxed">
+                    Description of history of women's soccer (at level).
+                </p>
+            </div>
+
+            <!-- Top Right: Image Box -->
+            <div class="bg-gray-200 rounded-lg p-6 min-h-[200px] flex items-center justify-center">
+                <div class="text-gray-500 text-xl font-medium">IMG</div>
+            </div>
+        </div>
+
+        <!-- Bottom Section -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+            <!-- Bottom Left: Bullet Points Box (spans 2 columns) -->
+            <div class="md:col-span-2 bg-gray-200 rounded-lg p-6 min-h-[300px]">
+                <h2 class="text-xl font-semibold text-gray-800 mb-4">Bullet point moments / breakthroughs to the sport and society</h2>
+                <ul class="space-y-3 text-gray-700">
+                    <li class="flex items-start">
+                        <span class="mr-2">•</span>
+                        <span>Key moment or breakthrough</span>
+                    </li>
+                    <li class="flex items-start">
+                        <span class="mr-2">•</span>
+                        <span>Key moment or breakthrough</span>
+                    </li>
+                    <li class="flex items-start">
+                        <span class="mr-2">•</span>
+                        <span>Key moment or breakthrough</span>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Bottom Right: Growth Data Visual Box -->
+            <div class="bg-gray-200 rounded-lg p-6 min-h-[300px] flex items-center justify-center">
+                <div class="text-center">
+                    <div class="text-gray-500 text-lg font-medium mb-2">Growth %</div>
+                    <div class="text-gray-500 text-sm">All time data visual</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Scroll Indicator -->
+        <div class="text-center mt-12 mb-8">
+            <a href="#page-2" class="flex flex-col items-center gap-2 cursor-pointer">
+                <svg class="w-6 h-6 text-gray-400 animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+                </svg>
+                <p class="text-gray-500 text-sm">Transition scroll to next page</p>
+            </a>
+        </div>
+    </div>
+
+    <!-- Page 2: Player Cards Section -->
+    <section id="page-2" class="min-h-screen bg-gray-100 pt-8 pb-16">
+        <!-- Page Number 2 -->
+        <div class="fixed top-4 left-4 text-gray-400 text-sm z-50">2</div>
+
+        <!-- Scroll Indicator at Top -->
+        <div class="text-center mb-8">
+            <svg class="w-6 h-6 text-gray-400 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+            </svg>
+        </div>
+
+        <!-- Main Content Container -->
+        <div class="container mx-auto px-6 py-8 max-w-7xl">
+            <!-- Header Title -->
+            <header class="bg-gray-200 rounded-lg py-6 mb-8">
+                <h1 class="text-3xl md:text-4xl font-bold text-gray-800 text-center">Title</h1>
+            </header>
+
+            <!-- Player Cards Section -->
+            <div class="mb-8">
+                <p class="text-gray-600 text-sm mb-6 italic">Player cards showing top 5 players, with small description below MVP | 2x champion | x stats</p>
+                
+                <!-- Player Cards Grid -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 mb-8">
+                    <div class="player-card bg-gray-200 rounded-lg p-4 cursor-pointer hover:bg-gray-300 transition-all duration-300" data-player="1">
+                        <div class="bg-gray-300 rounded h-32 mb-3 flex items-center justify-center">
+                            <span class="text-gray-500 text-sm">Player 1</span>
+                        </div>
+                        <p class="text-gray-700 text-xs text-center">MVP | 2x Champion | 150 Goals</p>
+                    </div>
+                    <div class="player-card bg-gray-200 rounded-lg p-4 cursor-pointer hover:bg-gray-300 transition-all duration-300" data-player="2">
+                        <div class="bg-gray-300 rounded h-32 mb-3 flex items-center justify-center">
+                            <span class="text-gray-500 text-sm">Player 2</span>
+                        </div>
+                        <p class="text-gray-700 text-xs text-center">MVP | 3x Champion | 200 Goals</p>
+                    </div>
+                    <div class="player-card bg-gray-200 rounded-lg p-4 cursor-pointer hover:bg-gray-300 transition-all duration-300" data-player="3">
+                        <div class="bg-gray-300 rounded h-32 mb-3 flex items-center justify-center">
+                            <span class="text-gray-500 text-sm">Player 3</span>
+                        </div>
+                        <p class="text-gray-700 text-xs text-center">MVP | 1x Champion | 120 Goals</p>
+                    </div>
+                    <div class="player-card bg-gray-200 rounded-lg p-4 cursor-pointer hover:bg-gray-300 transition-all duration-300" data-player="4">
+                        <div class="bg-gray-300 rounded h-32 mb-3 flex items-center justify-center">
+                            <span class="text-gray-500 text-sm">Player 4</span>
+                        </div>
+                        <p class="text-gray-700 text-xs text-center">MVP | 2x Champion | 180 Goals</p>
+                    </div>
+                    <div class="player-card bg-gray-200 rounded-lg p-4 cursor-pointer hover:bg-gray-300 transition-all duration-300" data-player="5">
+                        <div class="bg-gray-300 rounded h-32 mb-3 flex items-center justify-center">
+                            <span class="text-gray-500 text-sm">Player 5</span>
+                        </div>
+                        <p class="text-gray-700 text-xs text-center">MVP | 4x Champion | 250 Goals</p>
+                    </div>
+                </div>
+
+                <!-- Scroll Indicator -->
+                <div class="text-center mb-6">
+                    <svg class="w-6 h-6 text-gray-400 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+                    </svg>
+                </div>
+
+                <!-- Info Text -->
+                <p class="text-gray-600 text-sm text-center mb-6 italic">
+                    When a player card is clicked, it will produce a dropdown, that will give the history of that player and what they have done for women's soccer to grow.
+                </p>
+            </div>
+
+            <!-- Dropdown Area -->
+            <div id="playerDropdown" class="bg-gray-200 rounded-lg p-8 min-h-[400px] hidden">
+                <h2 class="text-2xl font-bold text-gray-800 mb-4 text-center">DropDown when player card is clicked</h2>
+                <div id="playerContent" class="text-gray-700">
+                    <!-- Player history content will be inserted here -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Page 3: Filter Data and KPIs Section -->
+    <section id="page-3" class="min-h-screen bg-gray-100 pt-8 pb-16">
+        <div class="container mx-auto px-6 py-8 max-w-7xl">
+            <!-- Filter Data Section -->
+            <div class="bg-white rounded-lg p-8 mb-8">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6">Filter Data</h2>
+                
+                <div class="space-y-6">
+                    <!-- Year Filter -->
+                    <div>
+                        <label class="block text-gray-900 font-medium mb-2">Year</label>
+                        <p class="text-sm text-gray-600 mb-3">(This should be a drop down to choose the year, if no year is selected its total)</p>
+                        <select id="yearFilter" class="w-full md:w-64 px-4 py-2 border border-gray-300 rounded-lg bg-white text-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                            <option value="">Total (All Years)</option>
+                            <option value="2023">2023</option>
+                            <option value="2022">2022</option>
+                            <option value="2021">2021</option>
+                            <option value="2020">2020</option>
+                            <option value="2019">2019</option>
+                        </select>
+                    </div>
+
+                    <!-- Metric Filter -->
+                    <div>
+                        <label class="block text-gray-900 font-medium mb-3">Metric</label>
+                        <div class="flex flex-wrap gap-3 mb-4">
+                            <button class="metric-filter px-6 py-2 bg-gray-200 text-gray-900 rounded-full hover:bg-gray-300 transition-all duration-300" data-metric="attendance">
+                                Attendance
+                            </button>
+                            <button class="metric-filter px-6 py-2 bg-gray-200 text-gray-900 rounded-full hover:bg-gray-300 transition-all duration-300" data-metric="sponsors">
+                                Sponsors
+                            </button>
+                            <button class="metric-filter px-6 py-2 bg-gray-200 text-gray-900 rounded-full hover:bg-gray-300 transition-all duration-300" data-metric="viewership">
+                                Viewership
+                            </button>
+                            <button class="metric-filter px-6 py-2 bg-gray-200 text-gray-900 rounded-full hover:bg-gray-300 transition-all duration-300" data-metric="investment">
+                                Investment
+                            </button>
+                            <button class="metric-filter px-6 py-2 bg-gray-200 text-gray-900 rounded-full hover:bg-gray-300 transition-all duration-300" data-metric="merchandise">
+                                Merchandise Sales
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Apply Button -->
+                    <div class="flex justify-end">
+                        <button id="applyFilter" class="px-8 py-3 bg-gray-900 text-white rounded-lg hover:bg-gray-800 transition-all duration-300 font-medium">
+                            Apply
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Key Performance Indicators Section -->
+            <div class="bg-white rounded-lg p-8">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-2 text-center">Key Performance Indicators</h2>
+                <p class="text-gray-600 text-center mb-8">Current metrics related to women's soccer growth.</p>
+                
+                <!-- KPI Cards Grid -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <!-- Total Growth Card -->
+                    <div class="bg-gray-50 rounded-lg p-6 border border-gray-200">
+                        <h3 class="text-gray-700 font-medium mb-2">Total Growth</h3>
+                        <div class="flex items-baseline gap-2">
+                            <span class="text-4xl font-bold text-gray-900">+3,400</span>
+                            <span class="text-lg text-green-600 font-semibold">+42%</span>
+                        </div>
+                    </div>
+
+                    <!-- Avg YoY Growth Card -->
+                    <div class="bg-gray-50 rounded-lg p-6 border border-gray-200">
+                        <h3 class="text-gray-700 font-medium mb-2">Avg YoY Growth</h3>
+                        <div class="flex items-baseline gap-2">
+                            <span class="text-4xl font-bold text-gray-900">8%</span>
+                            <span class="text-lg text-green-600 font-semibold">+1%</span>
+                        </div>
+                    </div>
+
+                    <!-- Peak Year Card -->
+                    <div class="bg-gray-50 rounded-lg p-6 border border-gray-200">
+                        <h3 class="text-gray-700 font-medium mb-2">Peak Year</h3>
+                        <div class="flex items-baseline gap-2">
+                            <span class="text-4xl font-bold text-gray-900">2023</span>
+                        </div>
+                    </div>
+
+                    <!-- Biggest Jump Card -->
+                    <div class="bg-gray-50 rounded-lg p-6 border border-gray-200">
+                        <h3 class="text-gray-700 font-medium mb-2">Biggest Jump</h3>
+                        <div class="flex items-baseline gap-2">
+                            <span class="text-4xl font-bold text-gray-900">2022</span>
+                            <span class="text-lg text-green-600 font-semibold">+17%</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Page 4: Main Metric Chart Section -->
+    <section id="page-4" class="min-h-screen bg-gray-100 pt-8 pb-16">
+        <div class="container mx-auto px-6 py-8 max-w-7xl">
+            <!-- Header -->
+            <div class="text-center mb-8">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-2">Main Metric Chart</h2>
+                <p class="text-gray-600">Growth metrics over the selected years.</p>
+            </div>
+
+            <!-- Chart Card -->
+            <div class="bg-white rounded-lg p-8 shadow-sm">
+                <h3 class="text-xl font-semibold text-gray-900 mb-6">Attendance Over Years</h3>
+                
+                <!-- Chart Container -->
+                <div class="relative w-full" style="height: 400px;">
+                    <svg id="attendanceChart" class="w-full h-full" viewBox="0 0 800 400" preserveAspectRatio="xMidYMid meet">
+                        <!-- Grid Lines -->
+                        <defs>
+                            <linearGradient id="areaGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                                <stop offset="0%" style="stop-color:#e5e7eb;stop-opacity:0.6" />
+                                <stop offset="100%" style="stop-color:#e5e7eb;stop-opacity:0.1" />
+                            </linearGradient>
+                        </defs>
+                        
+                        <!-- Horizontal Grid Lines -->
+                        <line x1="60" y1="50" x2="740" y2="50" stroke="#d1d5db" stroke-width="1" stroke-dasharray="4,4" />
+                        <line x1="60" y1="150" x2="740" y2="150" stroke="#d1d5db" stroke-width="1" stroke-dasharray="4,4" />
+                        <line x1="60" y1="250" x2="740" y2="250" stroke="#d1d5db" stroke-width="1" stroke-dasharray="4,4" />
+                        <line x1="60" y1="350" x2="740" y2="350" stroke="#d1d5db" stroke-width="1" stroke-dasharray="4,4" />
+                        
+                        <!-- Reference Line (Blue) -->
+                        <line x1="60" y1="100" x2="740" y2="100" stroke="#3b82f6" stroke-width="2" />
+                        
+                        <!-- Chart Area (Filled) -->
+                        <path id="areaPath" fill="url(#areaGradient)" stroke="none" />
+                        
+                        <!-- Chart Line -->
+                        <path id="linePath" fill="none" stroke="#1f2937" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+                        
+                        <!-- Y-axis Label -->
+                        <text x="30" y="200" transform="rotate(-90 30 200)" fill="#6b7280" font-size="14" font-family="Poppins">Attendance Count</text>
+                        
+                        <!-- X-axis Label -->
+                        <text x="400" y="390" fill="#6b7280" font-size="14" font-family="Poppins" text-anchor="middle">Year</text>
+                        
+                        <!-- Data Points -->
+                        <circle cx="100" cy="80" r="4" fill="#1f2937" />
+                        <circle cx="200" cy="280" r="4" fill="#1f2937" />
+                        <circle cx="300" cy="120" r="4" fill="#1f2937" />
+                        <circle cx="400" cy="200" r="4" fill="#1f2937" />
+                        <circle cx="500" cy="60" r="4" fill="#1f2937" />
+                        <circle cx="600" cy="140" r="4" fill="#1f2937" />
+                        <circle cx="700" cy="180" r="4" fill="#1f2937" />
+                        
+                        <!-- Year Labels -->
+                        <text x="100" y="370" fill="#6b7280" font-size="12" font-family="Poppins" text-anchor="middle">2017</text>
+                        <text x="200" y="370" fill="#6b7280" font-size="12" font-family="Poppins" text-anchor="middle">2018</text>
+                        <text x="300" y="370" fill="#6b7280" font-size="12" font-family="Poppins" text-anchor="middle">2019</text>
+                        <text x="400" y="370" fill="#6b7280" font-size="12" font-family="Poppins" text-anchor="middle">2020</text>
+                        <text x="500" y="370" fill="#6b7280" font-size="12" font-family="Poppins" text-anchor="middle">2021</text>
+                        <text x="600" y="370" fill="#6b7280" font-size="12" font-family="Poppins" text-anchor="middle">2022</text>
+                        <text x="700" y="370" fill="#6b7280" font-size="12" font-family="Poppins" text-anchor="middle">2023</text>
+                    </svg>
+                </div>
+            </div>
+
+            <!-- Footer Attribution -->
+            <div class="text-center mt-6 space-y-1">
+                <p class="text-gray-600 text-sm">Data pulled from official league sources.</p>
+                <p class="text-gray-600 text-sm">Last updated: October 2023</p>
+            </div>
+        </div>
+    </section>
+
+    <script src="scripts.js"></script>
+    <script>
+        // Player card dropdown functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const playerCards = document.querySelectorAll('.player-card');
+            const dropdown = document.getElementById('playerDropdown');
+            const playerContent = document.getElementById('playerContent');
+
+            // Sample player data (you can replace with real data)
+            const playerData = {
+                1: {
+                    name: 'Player 1',
+                    history: 'Player 1 has been a trailblazer in women\'s soccer, breaking barriers and setting new standards. Their achievements include multiple MVP awards and championships that have inspired a new generation of athletes.',
+                    impact: 'Their dedication to the sport has helped increase visibility and investment in women\'s soccer, contributing significantly to its growth and recognition.'
+                },
+                2: {
+                    name: 'Player 2',
+                    history: 'Player 2 has consistently demonstrated excellence on the field, earning recognition as one of the top performers. Their record-breaking goal count has set new benchmarks for the sport.',
+                    impact: 'Through their outstanding performance, they have helped attract major sponsorships and media attention, elevating the profile of women\'s soccer globally.'
+                },
+                3: {
+                    name: 'Player 3',
+                    history: 'Player 3 has been instrumental in advancing women\'s soccer through their leadership and skill. Their championship victory marked a pivotal moment in the sport\'s history.',
+                    impact: 'Their success has opened doors for more opportunities and recognition for women athletes, inspiring countless young players to pursue their dreams.'
+                },
+                4: {
+                    name: 'Player 4',
+                    history: 'Player 4 has made significant contributions to women\'s soccer through their consistent performance and dedication. Their achievements have helped shape the modern era of the sport.',
+                    impact: 'Their impact extends beyond the field, as they have become a role model and advocate for gender equality in sports, helping to grow the sport\'s fanbase and support.'
+                },
+                5: {
+                    name: 'Player 5',
+                    history: 'Player 5 stands as one of the most decorated players in women\'s soccer history. Their multiple championships and record-breaking statistics have cemented their legacy.',
+                    impact: 'Their remarkable career has been crucial in demonstrating the commercial viability and entertainment value of women\'s soccer, leading to increased investment and professional opportunities for future generations.'
+                }
+            };
+
+            playerCards.forEach(card => {
+                card.addEventListener('click', function() {
+                    const playerId = this.getAttribute('data-player');
+                    const player = playerData[playerId];
+
+                    // Update dropdown content
+                    playerContent.innerHTML = `
+                        <h3 class="text-xl font-semibold text-gray-800 mb-4">${player.name}</h3>
+                        <div class="space-y-4">
+                            <div>
+                                <h4 class="font-semibold text-gray-800 mb-2">History</h4>
+                                <p class="text-gray-700 leading-relaxed">${player.history}</p>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-gray-800 mb-2">Impact on Women's Soccer</h4>
+                                <p class="text-gray-700 leading-relaxed">${player.impact}</p>
+                            </div>
+                        </div>
+                    `;
+
+                    // Show dropdown with smooth animation
+                    dropdown.classList.remove('hidden');
+                    dropdown.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                });
+            });
+
+            // Metric filter selection
+            const metricFilters = document.querySelectorAll('.metric-filter');
+            metricFilters.forEach(button => {
+                button.addEventListener('click', function() {
+                    // Toggle selection
+                    if (this.classList.contains('selected')) {
+                        this.classList.remove('selected', 'bg-indigo-600', 'text-white');
+                        this.classList.add('bg-gray-200', 'text-gray-900');
+                    } else {
+                        this.classList.add('selected', 'bg-indigo-600', 'text-white');
+                        this.classList.remove('bg-gray-200', 'text-gray-900');
+                    }
+                });
+            });
+
+            // Apply filter button
+            const applyButton = document.getElementById('applyFilter');
+            const yearFilter = document.getElementById('yearFilter');
+            
+            applyButton.addEventListener('click', function() {
+                const selectedYear = yearFilter.value;
+                const selectedMetrics = Array.from(metricFilters)
+                    .filter(btn => btn.classList.contains('selected'))
+                    .map(btn => btn.getAttribute('data-metric'));
+                
+                console.log('Year:', selectedYear || 'Total');
+                console.log('Metrics:', selectedMetrics);
+                
+                // Here you would update the KPI cards based on the filters
+                // For now, just log the selections
+            });
+
+            // Draw attendance chart
+            // Data points: starts high, drops, rises, dips slightly, peaks, then declines
+            const chartData = [
+                { year: 2017, value: 280 }, // High start
+                { year: 2018, value: 80 },  // Significant drop
+                { year: 2019, value: 200 }, // Rises
+                { year: 2020, value: 150 }, // Dips slightly
+                { year: 2021, value: 320 }, // Rises to peak
+                { year: 2022, value: 300 }, // Slight decline
+                { year: 2023, value: 250 }  // Gentle decline
+            ];
+
+            const svg = document.getElementById('attendanceChart');
+            const linePath = document.getElementById('linePath');
+            const areaPath = document.getElementById('areaPath');
+            
+            const width = 680; // 740 - 60 (margins)
+            const height = 300; // 350 - 50 (margins)
+            const startX = 60;
+            const endX = 740;
+            const endY = 350;
+            
+            // Find min and max values for normalization
+            const values = chartData.map(d => d.value);
+            const maxValue = Math.max(...values);
+            const minValue = Math.min(...values);
+            const valueRange = maxValue - minValue;
+            
+            let linePathData = '';
+            let areaPathData = '';
+            
+            chartData.forEach((point, index) => {
+                const x = startX + (index * (width / (chartData.length - 1)));
+                // Normalize: higher value = lower y position (inverted)
+                const normalizedValue = ((point.value - minValue) / valueRange) * height;
+                const y = endY - normalizedValue;
+                
+                // Update circle positions
+                const circles = svg.querySelectorAll('circle');
+                if (circles[index]) {
+                    circles[index].setAttribute('cx', x);
+                    circles[index].setAttribute('cy', y);
+                }
+                
+                if (index === 0) {
+                    linePathData = `M ${x} ${y}`;
+                    areaPathData = `M ${x} ${endY} L ${x} ${y}`;
+                } else {
+                    // Use smooth curves
+                    const prevX = startX + ((index - 1) * (width / (chartData.length - 1)));
+                    const prevValue = chartData[index - 1].value;
+                    const prevNormalized = ((prevValue - minValue) / valueRange) * height;
+                    const prevY = endY - prevNormalized;
+                    
+                    const controlX1 = prevX + (x - prevX) / 2;
+                    const controlY1 = prevY;
+                    const controlX2 = prevX + (x - prevX) / 2;
+                    const controlY2 = y;
+                    
+                    linePathData += ` C ${controlX1} ${prevY}, ${controlX2} ${y}, ${x} ${y}`;
+                    areaPathData += ` C ${controlX1} ${prevY}, ${controlX2} ${y}, ${x} ${y}`;
+                }
+            });
+            
+            // Close the area path
+            areaPathData += ` L ${endX} ${endY} Z`;
+            
+            linePath.setAttribute('d', linePathData);
+            areaPath.setAttribute('d', areaPathData);
+        });
+    </script>
+</body>
+</html>
