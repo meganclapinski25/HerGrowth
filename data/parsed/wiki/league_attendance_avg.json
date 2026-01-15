@@ -12,9 +12,29 @@
   {
     "sport": "soccer",
     "level": "NWSL",
+    "season_year": 2013,
+    "metric_name": "attendance_total",
+    "metric_value": 375763,
+    "unit": "people",
+    "source": "Wikipedia",
+    "source_url": "https://en.wikipedia.org/wiki/National_Women%27s_Soccer_League_attendance"
+  },
+  {
+    "sport": "soccer",
+    "level": "NWSL",
     "season_year": 2014,
     "metric_name": "attendance_league_avg",
     "metric_value": 4137,
+    "unit": "people",
+    "source": "Wikipedia",
+    "source_url": "https://en.wikipedia.org/wiki/National_Women%27s_Soccer_League_attendance"
+  },
+  {
+    "sport": "soccer",
+    "level": "NWSL",
+    "season_year": 2014,
+    "metric_name": "attendance_total",
+    "metric_value": 446820,
     "unit": "people",
     "source": "Wikipedia",
     "source_url": "https://en.wikipedia.org/wiki/National_Women%27s_Soccer_League_attendance"
@@ -32,9 +52,29 @@
   {
     "sport": "soccer",
     "level": "NWSL",
+    "season_year": 2015,
+    "metric_name": "attendance_total",
+    "metric_value": 454100,
+    "unit": "people",
+    "source": "Wikipedia",
+    "source_url": "https://en.wikipedia.org/wiki/National_Women%27s_Soccer_League_attendance"
+  },
+  {
+    "sport": "soccer",
+    "level": "NWSL",
     "season_year": 2016,
     "metric_name": "attendance_league_avg",
     "metric_value": 5558,
+    "unit": "people",
+    "source": "Wikipedia",
+    "source_url": "https://en.wikipedia.org/wiki/National_Women%27s_Soccer_League_attendance"
+  },
+  {
+    "sport": "soccer",
+    "level": "NWSL",
+    "season_year": 2016,
+    "metric_name": "attendance_total",
+    "metric_value": 555775,
     "unit": "people",
     "source": "Wikipedia",
     "source_url": "https://en.wikipedia.org/wiki/National_Women%27s_Soccer_League_attendance"
@@ -52,9 +92,29 @@
   {
     "sport": "soccer",
     "level": "NWSL",
+    "season_year": 2017,
+    "metric_name": "attendance_total",
+    "metric_value": 609960,
+    "unit": "people",
+    "source": "Wikipedia",
+    "source_url": "https://en.wikipedia.org/wiki/National_Women%27s_Soccer_League_attendance"
+  },
+  {
+    "sport": "soccer",
+    "level": "NWSL",
     "season_year": 2018,
     "metric_name": "attendance_league_avg",
     "metric_value": 6024,
+    "unit": "people",
+    "source": "Wikipedia",
+    "source_url": "https://en.wikipedia.org/wiki/National_Women%27s_Soccer_League_attendance"
+  },
+  {
+    "sport": "soccer",
+    "level": "NWSL",
+    "season_year": 2018,
+    "metric_name": "attendance_total",
+    "metric_value": 650564,
     "unit": "people",
     "source": "Wikipedia",
     "source_url": "https://en.wikipedia.org/wiki/National_Women%27s_Soccer_League_attendance"
@@ -69,13 +129,32 @@
     "source": "Wikipedia",
     "source_url": "https://en.wikipedia.org/wiki/National_Women%27s_Soccer_League_attendance"
   },
-
+  {
+    "sport": "soccer",
+    "level": "NWSL",
+    "season_year": 2019,
+    "metric_name": "attendance_total",
+    "metric_value": 792409,
+    "unit": "people",
+    "source": "Wikipedia",
+    "source_url": "https://en.wikipedia.org/wiki/National_Women%27s_Soccer_League_attendance"
+  },
   {
     "sport": "soccer",
     "level": "NWSL",
     "season_year": 2021,
     "metric_name": "attendance_league_avg",
     "metric_value": 5528,
+    "unit": "people",
+    "source": "Wikipedia",
+    "source_url": "https://en.wikipedia.org/wiki/National_Women%27s_Soccer_League_attendance"
+  },
+  {
+    "sport": "soccer",
+    "level": "NWSL",
+    "season_year": 2021,
+    "metric_name": "attendance_total",
+    "metric_value": 592074,
     "unit": "people",
     "source": "Wikipedia",
     "source_url": "https://en.wikipedia.org/wiki/National_Women%27s_Soccer_League_attendance"
@@ -93,9 +172,29 @@
   {
     "sport": "soccer",
     "level": "NWSL",
+    "season_year": 2022,
+    "metric_name": "attendance_total",
+    "metric_value": 1042063,
+    "unit": "people",
+    "source": "Wikipedia",
+    "source_url": "https://en.wikipedia.org/wiki/National_Women%27s_Soccer_League_attendance"
+  },
+  {
+    "sport": "soccer",
+    "level": "NWSL",
     "season_year": 2023,
     "metric_name": "attendance_league_avg",
     "metric_value": 10432,
+    "unit": "people",
+    "source": "Wikipedia",
+    "source_url": "https://en.wikipedia.org/wiki/National_Women%27s_Soccer_League_attendance"
+  },
+  {
+    "sport": "soccer",
+    "level": "NWSL",
+    "season_year": 2023,
+    "metric_name": "attendance_total",
+    "metric_value": 1366581,
     "unit": "people",
     "source": "Wikipedia",
     "source_url": "https://en.wikipedia.org/wiki/National_Women%27s_Soccer_League_attendance"
@@ -113,9 +212,29 @@
   {
     "sport": "soccer",
     "level": "NWSL",
+    "season_year": 2024,
+    "metric_name": "attendance_total",
+    "metric_value": 2044848,
+    "unit": "people",
+    "source": "Wikipedia",
+    "source_url": "https://en.wikipedia.org/wiki/National_Women%27s_Soccer_League_attendance"
+  },
+  {
+    "sport": "soccer",
+    "level": "NWSL",
     "season_year": 2025,
     "metric_name": "attendance_league_avg",
     "metric_value": 10669,
+    "unit": "people",
+    "source": "Wikipedia",
+    "source_url": "https://en.wikipedia.org/wiki/National_Women%27s_Soccer_League_attendance"
+  },
+  {
+    "sport": "soccer",
+    "level": "NWSL",
+    "season_year": 2025,
+    "metric_name": "attendance_total",
+    "metric_value": 1926090,
     "unit": "people",
     "source": "Wikipedia",
     "source_url": "https://en.wikipedia.org/wiki/National_Women%27s_Soccer_League_attendance"
