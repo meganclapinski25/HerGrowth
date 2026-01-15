@@ -23,3 +23,4 @@ INSERT INTO metrics (
 VALUES %s
 ON CONFLICT (sport, level, season_year, metric_name) DO NOTHING;
 """
+
