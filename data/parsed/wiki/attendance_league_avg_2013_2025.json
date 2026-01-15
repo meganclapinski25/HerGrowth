@@ -2,10 +2,49 @@
   {
     "sport": "soccer",
     "level": "NWSL",
-    "season_year": 2018,
-    "team_name": "CHI",
-    "metric_name": "attendance_home_avg",
-    "metric_value": 43680,
+    "season_year": 2013,
+    "metric_name": "attendance_league_avg",
+    "metric_value": 4270,
+    "unit": "people",
+    "source": "Wikipedia",
+    "source_url": "https://en.wikipedia.org/wiki/National_Women%27s_Soccer_League_attendance"
+  },
+  {
+    "sport": "soccer",
+    "level": "NWSL",
+    "season_year": 2014,
+    "metric_name": "attendance_league_avg",
+    "metric_value": 4137,
+    "unit": "people",
+    "source": "Wikipedia",
+    "source_url": "https://en.wikipedia.org/wiki/National_Women%27s_Soccer_League_attendance"
+  },
+  {
+    "sport": "soccer",
+    "level": "NWSL",
+    "season_year": 2015,
+    "metric_name": "attendance_league_avg",
+    "metric_value": 5046,
+    "unit": "people",
+    "source": "Wikipedia",
+    "source_url": "https://en.wikipedia.org/wiki/National_Women%27s_Soccer_League_attendance"
+  },
+  {
+    "sport": "soccer",
+    "level": "NWSL",
+    "season_year": 2016,
+    "metric_name": "attendance_league_avg",
+    "metric_value": 5558,
+    "unit": "people",
+    "source": "Wikipedia",
+    "source_url": "https://en.wikipedia.org/wiki/National_Women%27s_Soccer_League_attendance"
+  },
+  {
+    "sport": "soccer",
+    "level": "NWSL",
+    "season_year": 2017,
+    "metric_name": "attendance_league_avg",
+    "metric_value": 5083,
     "unit": "people",
     "source": "Wikipedia",
     "source_url": "https://en.wikipedia.org/wiki/National_Women%27s_Soccer_League_attendance"
@@ -14,9 +53,8 @@
     "sport": "soccer",
     "level": "NWSL",
     "season_year": 2018,
-    "team_name": "HOU",
-    "metric_name": "attendance_home_avg",
-    "metric_value": 3896,
+    "metric_name": "attendance_league_avg",
+    "metric_value": 6024,
     "unit": "people",
     "source": "Wikipedia",
     "source_url": "https://en.wikipedia.org/wiki/National_Women%27s_Soccer_League_attendance"
@@ -24,10 +62,20 @@
   {
     "sport": "soccer",
     "level": "NWSL",
-    "season_year": 2018,
-    "team_name": "NC",
-    "metric_name": "attendance_home_avg",
-    "metric_value": 5129,
+    "season_year": 2019,
+    "metric_name": "attendance_league_avg",
+    "metric_value": 7337,
+    "unit": "people",
+    "source": "Wikipedia",
+    "source_url": "https://en.wikipedia.org/wiki/National_Women%27s_Soccer_League_attendance"
+  },
+
+  {
+    "sport": "soccer",
+    "level": "NWSL",
+    "season_year": 2021,
+    "metric_name": "attendance_league_avg",
+    "metric_value": 5528,
     "unit": "people",
     "source": "Wikipedia",
     "source_url": "https://en.wikipedia.org/wiki/National_Women%27s_Soccer_League_attendance"
@@ -35,10 +83,9 @@
   {
     "sport": "soccer",
     "level": "NWSL",
-    "season_year": 2018,
-    "team_name": "NJY",
-    "metric_name": "attendance_home_avg",
-    "metric_value": 25310,
+    "season_year": 2022,
+    "metric_name": "attendance_league_avg",
+    "metric_value": 7894,
     "unit": "people",
     "source": "Wikipedia",
     "source_url": "https://en.wikipedia.org/wiki/National_Women%27s_Soccer_League_attendance"
@@ -46,10 +93,9 @@
   {
     "sport": "soccer",
     "level": "NWSL",
-    "season_year": 2018,
-    "team_name": "ORL",
-    "metric_name": "attendance_home_avg",
-    "metric_value": 4837,
+    "season_year": 2023,
+    "metric_name": "attendance_league_avg",
+    "metric_value": 10432,
     "unit": "people",
     "source": "Wikipedia",
     "source_url": "https://en.wikipedia.org/wiki/National_Women%27s_Soccer_League_attendance"
@@ -57,10 +103,9 @@
   {
     "sport": "soccer",
     "level": "NWSL",
-    "season_year": 2018,
-    "team_name": "POR",
-    "metric_name": "attendance_home_avg",
-    "metric_value": 169590,
+    "season_year": 2024,
+    "metric_name": "attendance_league_avg",
+    "metric_value": 11235,
     "unit": "people",
     "source": "Wikipedia",
     "source_url": "https://en.wikipedia.org/wiki/National_Women%27s_Soccer_League_attendance"
@@ -68,32 +113,9 @@
   {
     "sport": "soccer",
     "level": "NWSL",
-    "season_year": 2018,
-    "team_name": "RGN",
-    "metric_name": "attendance_home_avg",
-    "metric_value": 38240,
-    "unit": "people",
-    "source": "Wikipedia",
-    "source_url": "https://en.wikipedia.org/wiki/National_Women%27s_Soccer_League_attendance"
-  },
-  {
-    "sport": "soccer",
-    "level": "NWSL",
-    "season_year": 2018,
-    "team_name": "UTA",
-    "metric_name": "attendance_home_avg",
-    "metric_value": 9466,
-    "unit": "people",
-    "source": "Wikipedia",
-    "source_url": "https://en.wikipedia.org/wiki/National_Women%27s_Soccer_League_attendance"
-  },
-  {
-    "sport": "soccer",
-    "level": "NWSL",
-    "season_year": 2018,
-    "team_name": "WAS",
-    "metric_name": "attendance_home_avg",
-    "metric_value": 38920,
+    "season_year": 2025,
+    "metric_name": "attendance_league_avg",
+    "metric_value": 10669,
     "unit": "people",
     "source": "Wikipedia",
     "source_url": "https://en.wikipedia.org/wiki/National_Women%27s_Soccer_League_attendance"
