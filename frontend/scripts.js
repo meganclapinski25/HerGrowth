@@ -191,6 +191,25 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 
+  // Update peak year card
+  function hgUpdatePeakYearCard(peakYear, metric) {
+    const peakYearValueEl = document.getElementById("peakYearValue");
+    const peakYearLabelEl = document.getElementById("peakYearLabel");
+    const peakYearSubtextEl = document.getElementById("peakYearSubtext");
+    
+    if (peakYearValueEl) {
+      peakYearValueEl.textContent = peakYear ?? "—";
+    }
+    
+    if (peakYearLabelEl) {
+      peakYearLabelEl.textContent = "Peak Year";
+    }
+    
+    if (peakYearSubtextEl) {
+      peakYearSubtextEl.textContent = "All time data";
+    }
+  }
+
   // Draw attendance chart with all years
   function drawAttendanceChart(data, metric = "attendance") {
     const svg = document.getElementById("attendanceChart");
@@ -331,6 +350,10 @@ document.addEventListener("DOMContentLoaded", function () {
         
         if (chartData.length >= 2) {
           drawAttendanceChart(chartData, "attendance");
+          
+          // Calculate and update peak year for attendance
+          const peakData = chartData.reduce((max, d) => d.value > max.value ? d : max, chartData[0]);
+          hgUpdatePeakYearCard(peakData.year, "attendance");
         }
         
         return; // Exit early, we've handled the filtered view
@@ -365,6 +388,9 @@ document.addEventListener("DOMContentLoaded", function () {
       }
       hgSetText("kpiGrowthSeasonYear", "");
       hgSetText("kpiGrowthSeasonPct", "");
+      
+      // Update peak year card
+      hgUpdatePeakYearCard(kpis.peak_year, "attendance");
 
       if (kpis.biggest_jump) {
         const biggestJumpEl = document.getElementById("kpiAvgGrowth");
@@ -403,6 +429,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
         // Draw chart with all data
         drawAttendanceChart(chartData, "attendance");
+        
+        // Calculate and update peak year for attendance
+        const peakData = chartData.reduce((max, d) => d.value > max.value ? d : max, chartData[0]);
+        hgUpdatePeakYearCard(peakData.year, "attendance");
       }
 
       console.log("HerGrowth soccer data loaded ✅");
@@ -541,6 +571,9 @@ document.addEventListener("DOMContentLoaded", function () {
               return jump > max.jump ? { jump, from: sortedData[i - 1].season_year, to: d.season_year } : max;
             }, { jump: -Infinity, from: null, to: null });
             
+            // Update peak year card
+            hgUpdatePeakYearCard(peak.season_year, "viewership");
+            
             // Update KPIs for all-time view
             hgSetText("kpiAvgPerGameLabel", "Total Growth");
             hgSetText("kpiTotalSeasonLabel", "Avg YoY Growth");
@@ -627,6 +660,10 @@ document.addEventListener("DOMContentLoaded", function () {
             value: Number(d.value),
           }));
           drawAttendanceChart(chartData, "viewership");
+          
+          // Calculate and update peak year for viewership
+          const peakData = chartData.reduce((max, d) => d.value > max.value ? d : max, chartData[0]);
+          hgUpdatePeakYearCard(peakData.year, "viewership");
         }
       }).catch(err => {
         console.error("Failed to fetch viewership:", err);
