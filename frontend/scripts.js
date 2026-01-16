@@ -226,7 +226,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     areaPath += ` L ${xScale(data.length - 1)} ${height - padding.bottom} Z`;
     
-    // Create area path element
+    // Create area path element with dark theme gradient
     const areaPathEl = document.createElementNS("http://www.w3.org/2000/svg", "path");
     areaPathEl.setAttribute("id", "areaPath");
     areaPathEl.setAttribute("d", areaPath);
@@ -239,7 +239,7 @@ document.addEventListener("DOMContentLoaded", function () {
     linePathEl.setAttribute("id", "linePath");
     linePathEl.setAttribute("d", linePath);
     linePathEl.setAttribute("fill", "none");
-    linePathEl.setAttribute("stroke", "#1f2937");
+    linePathEl.setAttribute("stroke", "#60a5fa");
     linePathEl.setAttribute("stroke-width", "3");
     linePathEl.setAttribute("stroke-linecap", "round");
     linePathEl.setAttribute("stroke-linejoin", "round");
@@ -256,7 +256,7 @@ document.addEventListener("DOMContentLoaded", function () {
       circle.setAttribute("cx", x);
       circle.setAttribute("cy", y);
       circle.setAttribute("r", "4");
-      circle.setAttribute("fill", "#1f2937");
+      circle.setAttribute("fill", "#60a5fa");
       svg.appendChild(circle);
 
       // Year label
@@ -264,7 +264,7 @@ document.addEventListener("DOMContentLoaded", function () {
       yearLabel.setAttribute("class", "year-label");
       yearLabel.setAttribute("x", x);
       yearLabel.setAttribute("y", height - padding.bottom + 20);
-      yearLabel.setAttribute("fill", "#6b7280");
+      yearLabel.setAttribute("fill", "#9ca3af");
       yearLabel.setAttribute("font-size", "12");
       yearLabel.setAttribute("font-family", "Poppins");
       yearLabel.setAttribute("text-anchor", "middle");
@@ -343,12 +343,20 @@ document.addEventListener("DOMContentLoaded", function () {
       hgSetText("kpiAvgPerGameYear", `${kpis.range.start_year} - ${kpis.range.end_year}`);
       hgSetText("kpiTotalSeason", hgFormatNumber(kpis.avg_yoy_growth));
       hgSetText("kpiTotalSeasonYear", "Average across all years");
-      hgSetText("kpiGrowthSeason", kpis.peak_year ?? "—");
+      const peakYearEl = document.getElementById("kpiGrowthSeason");
+      if (peakYearEl) {
+        peakYearEl.textContent = kpis.peak_year ?? "—";
+        peakYearEl.style.color = "#f9fafb";
+      }
       hgSetText("kpiGrowthSeasonYear", "");
       hgSetText("kpiGrowthSeasonPct", "");
 
       if (kpis.biggest_jump) {
-        hgSetText("kpiAvgGrowth", `${kpis.biggest_jump.from_year}→${kpis.biggest_jump.to_year}`);
+        const biggestJumpEl = document.getElementById("kpiAvgGrowth");
+        if (biggestJumpEl) {
+          biggestJumpEl.textContent = `${kpis.biggest_jump.from_year}→${kpis.biggest_jump.to_year}`;
+          biggestJumpEl.style.color = "#f9fafb";
+        }
         const allDataForJump = await hgFetchAttendance();
         const prev = allDataForJump.find(d => Number(d.season_year) === kpis.biggest_jump.from_year);
         const curr = allDataForJump.find(d => Number(d.season_year) === kpis.biggest_jump.to_year);
@@ -358,7 +366,11 @@ document.addEventListener("DOMContentLoaded", function () {
           hgSetTextWithColor("kpiAvgGrowthPct", "—", true);
         }
       } else {
-        hgSetText("kpiAvgGrowth", "—");
+        const biggestJumpEl2 = document.getElementById("kpiAvgGrowth");
+        if (biggestJumpEl2) {
+          biggestJumpEl2.textContent = "—";
+          biggestJumpEl2.style.color = "#f9fafb";
+        }
         hgSetTextWithColor("kpiAvgGrowthPct", "—", true);
       }
 

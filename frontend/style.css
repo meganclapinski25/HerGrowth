@@ -7,6 +7,252 @@ html {
     scroll-behavior: smooth;
 }
 
+/* Sleek Black/Grey Background */
+body:not(.index-page) {
+    background: #0a0a0a;
+    background-image: 
+        radial-gradient(circle at 20% 30%, rgba(55, 65, 81, 0.3) 0%, transparent 50%),
+        radial-gradient(circle at 80% 70%, rgba(31, 41, 55, 0.4) 0%, transparent 50%),
+        linear-gradient(135deg, #0a0a0a 0%, #111827 50%, #0a0a0a 100%);
+    position: relative;
+    min-height: 100vh;
+}
+
+/* Landing page keeps its image background */
+body.index-page {
+    background: none;
+}
+
+body.index-page::before,
+body.index-page::after {
+    display: none;
+}
+
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+        radial-gradient(circle at 10% 20%, rgba(75, 85, 99, 0.15) 0%, transparent 40%),
+        radial-gradient(circle at 90% 80%, rgba(55, 65, 81, 0.15) 0%, transparent 40%),
+        radial-gradient(circle at 50% 50%, rgba(31, 41, 55, 0.1) 0%, transparent 60%);
+    pointer-events: none;
+    z-index: 0;
+}
+
+body::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        repeating-linear-gradient(0deg, transparent, transparent 1px, rgba(255, 255, 255, 0.02) 1px, rgba(255, 255, 255, 0.02) 2px),
+        repeating-linear-gradient(90deg, transparent, transparent 1px, rgba(255, 255, 255, 0.02) 1px, rgba(255, 255, 255, 0.02) 2px);
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.5;
+}
+
+/* Ensure content is above background layers */
+body > * {
+    position: relative;
+    z-index: 1;
+}
+
+/* Add subtle backdrop to main content areas for better readability */
+.container {
+    position: relative;
+}
+
+/* Enhance card backgrounds for better contrast - Dark theme */
+.bg-white {
+    background-color: rgba(17, 24, 39, 0.8) !important;
+    backdrop-filter: blur(20px);
+    border-color: rgba(75, 85, 99, 0.3) !important;
+}
+
+/* Update text colors for dark theme */
+.text-gray-900 {
+    color: #f9fafb !important;
+}
+
+.text-gray-700 {
+    color: #d1d5db !important;
+}
+
+.text-gray-600 {
+    color: #9ca3af !important;
+}
+
+.text-gray-500 {
+    color: #6b7280 !important;
+}
+
+/* Ensure all KPI value text is visible */
+#kpiAvgPerGame,
+#kpiTotalSeason,
+#kpiGrowthSeason,
+#kpiAvgGrowth {
+    color: #f9fafb !important;
+}
+
+/* Update gradient backgrounds for dark theme */
+.bg-gradient-to-br.from-indigo-50.to-purple-50,
+.bg-gradient-to-br.from-indigo-100.to-purple-100 {
+    background: linear-gradient(135deg, rgba(31, 41, 55, 0.6) 0%, rgba(17, 24, 39, 0.8) 100%) !important;
+    border-color: rgba(75, 85, 99, 0.4) !important;
+}
+
+/* Update header and card styles */
+header.bg-white,
+.bg-white,
+.bg-white\/95 {
+    background-color: rgba(17, 24, 39, 0.85) !important;
+    backdrop-filter: blur(20px);
+    border-color: rgba(75, 85, 99, 0.3) !important;
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.5), 0 10px 10px -5px rgba(0, 0, 0, 0.2) !important;
+}
+
+/* Fixed header styling */
+header.fixed {
+    background-color: rgba(10, 10, 10, 0.9) !important;
+    backdrop-filter: blur(20px);
+    border-color: rgba(75, 85, 99, 0.2) !important;
+}
+
+/* Update gradient text to work on dark background */
+.bg-gradient-to-r.from-indigo-600.to-purple-600 {
+    background: linear-gradient(135deg, #60a5fa 0%, #a78bfa 100%) !important;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* Ensure header text is visible */
+h1.bg-gradient-to-r {
+    color: #f9fafb !important;
+    -webkit-text-fill-color: transparent;
+}
+
+/* Fix Peak Year and Biggest Jump text colors - ensure all instances are white */
+#kpiGrowthSeason,
+#kpiAvgGrowth {
+    color: #f9fafb !important;
+}
+
+/* Ensure header text is visible - use solid white */
+header h1,
+.bg-white header h1,
+header.bg-white h1 {
+    color: #ffffff !important;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3) !important;
+    background: none !important;
+    -webkit-text-fill-color: #ffffff !important;
+}
+
+/* Override any gradient text styles for headers */
+header h1.bg-gradient-to-r,
+h1.bg-gradient-to-r {
+    background: none !important;
+    -webkit-background-clip: unset !important;
+    background-clip: unset !important;
+    -webkit-text-fill-color: #ffffff !important;
+    color: #ffffff !important;
+}
+
+/* Apply Filters button - ensure visibility */
+#applyFilter {
+    background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%) !important;
+    color: #ffffff !important;
+    font-weight: 600 !important;
+    border: none !important;
+}
+
+#applyFilter:hover {
+    background: linear-gradient(135deg, #2563eb 0%, #7c3aed 100%) !important;
+    color: #ffffff !important;
+}
+
+#applyFilter * {
+    color: #ffffff !important;
+}
+
+/* Update accent colors */
+.text-indigo-600 {
+    color: #60a5fa !important;
+}
+
+.bg-indigo-600 {
+    background-color: #60a5fa !important;
+}
+
+/* Update KPI card backgrounds */
+.bg-gradient-to-br.from-indigo-50.to-purple-50 {
+    background: linear-gradient(135deg, rgba(31, 41, 55, 0.7) 0%, rgba(17, 24, 39, 0.9) 100%) !important;
+    border-color: rgba(75, 85, 99, 0.4) !important;
+}
+
+/* Update buttons and interactive elements */
+button.bg-white {
+    background-color: rgba(31, 41, 55, 0.8) !important;
+    border-color: rgba(75, 85, 99, 0.4) !important;
+    color: #f9fafb !important;
+}
+
+button.bg-white:hover {
+    background-color: rgba(55, 65, 81, 0.9) !important;
+    border-color: rgba(75, 85, 99, 0.6) !important;
+}
+
+/* Update select/dropdown styles */
+select {
+    background-color: rgba(31, 41, 55, 0.8) !important;
+    border-color: rgba(75, 85, 99, 0.4) !important;
+    color: #f9fafb !important;
+}
+
+select:focus {
+    border-color: rgba(96, 165, 250, 0.6) !important;
+    background-color: rgba(31, 41, 55, 0.9) !important;
+}
+
+/* Update chart background and colors */
+#attendanceChart {
+    background-color: rgba(17, 24, 39, 0.5);
+    border-radius: 0.5rem;
+}
+
+/* Update chart line and text colors for dark theme */
+#attendanceChart line {
+    stroke: rgba(156, 163, 175, 0.3);
+}
+
+#attendanceChart text {
+    fill: #9ca3af;
+}
+
+#attendanceChart #linePath {
+    stroke: #60a5fa;
+}
+
+#attendanceChart .data-point {
+    fill: #60a5fa;
+}
+
+#attendanceChart #areaPath {
+    fill: url(#areaGradient);
+}
+
+/* Section backgrounds with subtle transparency */
+section {
+    position: relative;
+}
+
 /* Pill Button Drop-Down Animation with Recoil */
 .pill-button {
     opacity: 0;
@@ -62,13 +308,32 @@ html {
     }
 }
 
-/* Selected button state */
+/* Selected button state - Dark theme */
 .pill-button.selected {
-    background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
-    color: white;
+    background: linear-gradient(135deg, #60a5fa 0%, #a78bfa 100%);
+    color: #0a0a0a;
     transform: scale(1.05) translateY(-2px);
-    box-shadow: 0 20px 25px -5px rgba(99, 102, 241, 0.4), 0 10px 10px -5px rgba(99, 102, 241, 0.2);
+    box-shadow: 0 20px 25px -5px rgba(96, 165, 250, 0.4), 0 10px 10px -5px rgba(167, 139, 250, 0.2);
     border-color: transparent;
+}
+
+/* Metric filter buttons - dark theme */
+.metric-filter {
+    background-color: rgba(31, 41, 55, 0.8) !important;
+    color: #f9fafb !important;
+    border: 1px solid rgba(75, 85, 99, 0.4) !important;
+}
+
+.metric-filter:hover {
+    background-color: rgba(55, 65, 81, 0.9) !important;
+    border-color: rgba(96, 165, 250, 0.5) !important;
+}
+
+/* Metric filter selected state */
+.metric-filter.selected {
+    background: linear-gradient(135deg, #60a5fa 0%, #a78bfa 100%) !important;
+    color: #0a0a0a !important;
+    border-color: transparent !important;
 }
 
 /* Fade in animation */
