@@ -211,10 +211,11 @@
                     <div class="bg-gradient-to-br from-indigo-50 to-purple-50 rounded-2xl p-8 border border-indigo-100 shadow-lg hover:shadow-xl transition-shadow duration-300">
                         <h3 class="text-gray-700 font-semibold mb-4 text-lg">Total Growth</h3>
                         <div class="flex items-baseline gap-3">
-                            <span id="kpiTotalGrowth" class="text-5xl font-bold text-gray-900">—</span>
-                            <span id="kpiTotalGrowthPct" class="text-2xl text-green-600 font-bold">—</span>
-
+                        <span id="kpiTotalGrowth" class="text-5xl font-bold text-gray-900">—</span>
+                        <span id="kpiTotalGrowthPct" class="text-2xl text-green-600 font-bold">—</span>
+                        </div>
                     </div>
+  
 
                     <!-- Avg YoY Growth Card -->
                     <div class="bg-gradient-to-br from-indigo-50 to-purple-50 rounded-2xl p-8 border border-indigo-100 shadow-lg hover:shadow-xl transition-shadow duration-300">
@@ -328,7 +329,7 @@
         // Player card dropdown functionality
         document.addEventListener('DOMContentLoaded', function() {
 
-            const API_BASE = "http://127.0.0.1:8000";
+            
             const playerCards = document.querySelectorAll('.player-card');
             const dropdown = document.getElementById('playerDropdown');
             const playerContent = document.getElementById('playerContent');
@@ -419,103 +420,9 @@
                 // Here you would update the KPI cards based on the filters
                 // For now, just log the selections
             });
+        
+        });
 
-            // Draw attendance chart
-            // Data points: starts high, drops, rises, dips slightly, peaks, then declines
-            const chartData = [
-                { year: 2017, value: 280 }, // High start
-                { year: 2018, value: 80 },  // Significant drop
-                { year: 2019, value: 200 }, // Rises
-                { year: 2020, value: 150 }, // Dips slightly
-                { year: 2021, value: 320 }, // Rises to peak
-                { year: 2022, value: 300 }, // Slight decline
-                { year: 2023, value: 250 }  // Gentle decline
-            ];
-
-            const svg = document.getElementById('attendanceChart');
-            const linePath = document.getElementById('linePath');
-            const areaPath = document.getElementById('areaPath');
-            
-            const width = 680; // 740 - 60 (margins)
-            const height = 300; // 350 - 50 (margins)
-            const startX = 60;
-            const endX = 740;
-            const endY = 350;
-            
-            // Find min and max values for normalization
-            const values = chartData.map(d => d.value);
-            const maxValue = Math.max(...values);
-            const minValue = Math.min(...values);
-            const valueRange = maxValue - minValue;
-            
-            let linePathData = '';
-            let areaPathData = '';
-            
-            chartData.forEach((point, index) => {
-                const x = startX + (index * (width / (chartData.length - 1)));
-                // Normalize: higher value = lower y position (inverted)
-                const normalizedValue = ((point.value - minValue) / valueRange) * height;
-                const y = endY - normalizedValue;
-                
-                // Update circle positions
-                const circles = svg.querySelectorAll('circle');
-                if (circles[index]) {
-                    circles[index].setAttribute('cx', x);
-                    circles[index].setAttribute('cy', y);
-                }
-                
-                if (index === 0) {
-                    linePathData = `M ${x} ${y}`;
-                    areaPathData = `M ${x} ${endY} L ${x} ${y}`;
-                } else {
-                    // Use smooth curves
-                    const prevX = startX + ((index - 1) * (width / (chartData.length - 1)));
-                    const prevValue = chartData[index - 1].value;
-                    const prevNormalized = ((prevValue - minValue) / valueRange) * height;
-                    const prevY = endY - prevNormalized;
-                    
-                    const controlX1 = prevX + (x - prevX) / 2;
-                    const controlY1 = prevY;
-                    const controlX2 = prevX + (x - prevX) / 2;
-                    const controlY2 = y;
-                    
-                    linePathData += ` C ${controlX1} ${prevY}, ${controlX2} ${y}, ${x} ${y}`;
-                    areaPathData += ` C ${controlX1} ${prevY}, ${controlX2} ${y}, ${x} ${y}`;
-                }
-            });
-            
-            // Close the area path
-            areaPathData += ` L ${endX} ${endY} Z`;
-            
-            linePath.setAttribute('d', linePathData);
-            areaPath.setAttribute('d', areaPathData);
-            async function loadAttendanceFromAPI() {
-                try {
-                  const res = await fetch(`${API_BASE}/attendance/nwsl`);
-                  if (!res.ok) throw new Error(`API error: ${res.status}`);
-                  const data = await res.json();
-          
-                  // Use TOTAL attendance for the chart
-                  const chartData = data.map((d) => ({
-                    year: d.season_year,
-                    value: d.total_attendance,
-                  }));
-          
-                  // IMPORTANT: your SVG only has 7 circles/labels right now.
-                  // For now, just show the last 7 seasons so it fits your current SVG setup.
-                  const lastSeven = chartData.slice(-7);
-          
-                  drawAttendanceChart(lastSeven);
-          
-                  console.log("Loaded attendance:", data);
-                } catch (err) {
-                  console.error("Failed to load attendance from API:", err);
-                }
-              }
-          
-              // Run it once when the page loads
-              loadAttendanceFromAPI();
-            });
         
     </script>
 </body>

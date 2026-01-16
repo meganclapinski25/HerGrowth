@@ -37,7 +37,9 @@ def extract_int(value):
     return int(value) if value.isdigit() else None
 
 def main ():
-    output_dir = Path("data/parsed/wiki")
+    # Get backend root directory (parent of scrapers folder)
+    backend_root = Path(__file__).parent.parent
+    output_dir = backend_root / "data" / "parsed" / "wiki"
     output_dir.mkdir(parents=True, exist_ok=True)
     
     response = requests.get(URL, headers=HEADERS, timeout = 30)

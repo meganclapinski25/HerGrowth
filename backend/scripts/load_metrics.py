@@ -14,7 +14,9 @@ DB_CONFIG = {
     "password": "",
 }
 
-JSON_PATH = Path("data/parsed/wiki/league_attendance_avg.json")
+# Get backend root directory (parent of scripts folder)
+BACKEND_ROOT = Path(__file__).parent.parent
+JSON_PATH = BACKEND_ROOT / "data" / "parsed" / "wiki" / "league_attendance_avg.json"
 
 INSERT_SQL = """
 INSERT INTO metrics (
