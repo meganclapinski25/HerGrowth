@@ -16,10 +16,19 @@ pip install -r requirements.txt
 
 2. Ensure PostgreSQL is running and configured in `api/main.py` (DB_CONFIG)
 
+   - If you want to run without Postgres, set `HG_DATA_MODE=json` to read the bundled JSON file.
+   - Optionally set `HG_JSON_PATH` to point at a different JSON file.
+
 3. Run the API server:
 ```bash
 cd api
 uvicorn main:app --reload
+```
+
+   JSON-only mode (no Postgres):
+```bash
+cd api
+HG_DATA_MODE=json uvicorn main:app --reload
 ```
 
 The API will be available at `http://127.0.0.1:8000`
