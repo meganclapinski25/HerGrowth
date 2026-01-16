@@ -396,21 +396,117 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 
+  // Fetch viewership data
+  async function hgFetchViewership(year = null) {
+    const url = year 
+      ? `${API_BASE}/metrics/viewership/nwsl?year=${year}`
+      : `${API_BASE}/metrics/viewership/nwsl`;
+    const res = await fetch(url);
+    if (!res.ok) throw new Error(`API error: ${res.status}`);
+    return await res.json();
+  }
+
+  // Update KPI display for filtered viewership
+  function hgUpdateFilteredKPIsForViewership(data, year) {
+    console.log("Updating filtered viewership KPIs for year:", year, "Data:", data);
+    
+    if (!data || data.length === 0) {
+      console.warn("No viewership data available");
+      return;
+    }
+
+    const yearNum = Number(year);
+    const yearData = data.find(d => Number(d.season_year) === yearNum);
+    
+    if (!yearData) {
+      console.warn("Year viewership data not found for year:", yearNum, "Available years:", data.map(d => d.season_year));
+      return;
+    }
+    
+    console.log("Found year viewership data:", yearData);
+
+    // Sort data by year - use total_viewership if available, otherwise avg_viewership
+    const sortedData = data
+      .map(d => ({
+        ...d,
+        value: d.total_viewership != null ? d.total_viewership : d.avg_viewership
+      }))
+      .filter(d => d.value != null)
+      .sort((a, b) => Number(a.season_year) - Number(b.season_year));
+
+    // Get the value for the selected year (total_viewership preferred, avg_viewership as fallback)
+    const yearValue = yearData.total_viewership != null ? yearData.total_viewership : yearData.avg_viewership;
+
+    // 1. Average per game/match for that season
+    hgSetText("kpiAvgPerGame", hgFormatNumber(yearData.avg_viewership || yearData.total_viewership || "—"));
+    hgSetText("kpiAvgPerGameYear", `Season ${year}`);
+    hgSetText("kpiAvgPerGameLabel", "Average Per Match");
+
+    // 2. Total for that season
+    hgSetText("kpiTotalSeason", hgFormatNumber(yearData.total_viewership || yearData.avg_viewership || "—"));
+    hgSetText("kpiTotalSeasonYear", `Season ${year}`);
+    hgSetText("kpiTotalSeasonLabel", "Total for Season");
+
+    // 3. Total Growth (from first year to selected year)
+    if (sortedData.length > 0 && yearValue != null) {
+      const firstYear = sortedData[0];
+      const totalGrowth = yearValue - firstYear.value;
+      const totalGrowthPct = hgPctChange(firstYear.value, yearValue);
+      
+      hgSetTextWithColor("kpiGrowthSeason", hgFormatNumber(totalGrowth), false);
+      hgSetTextWithColor("kpiGrowthSeasonPct", hgFormatPct(totalGrowthPct), true);
+      hgSetText("kpiGrowthSeasonYear", `Since ${firstYear.season_year}`);
+      hgSetText("kpiGrowthSeasonLabel", "Total Growth");
+    } else {
+      hgSetTextWithColor("kpiGrowthSeason", "—", false);
+      hgSetTextWithColor("kpiGrowthSeasonPct", "—", true);
+      hgSetText("kpiGrowthSeasonYear", "No data");
+      hgSetText("kpiGrowthSeasonLabel", "Total Growth");
+    }
+
+    // 4. YoY Growth (Year-over-Year growth for that specific year)
+    const currentIndex = sortedData.findIndex(d => Number(d.season_year) === year);
+    if (currentIndex > 0 && yearValue != null) {
+      const prevYear = sortedData[currentIndex - 1];
+      const yoyGrowth = yearValue - prevYear.value;
+      const yoyGrowthPct = hgPctChange(prevYear.value, yearValue);
+      
+      hgSetTextWithColor("kpiAvgGrowth", hgFormatNumber(yoyGrowth), false);
+      hgSetTextWithColor("kpiAvgGrowthPct", hgFormatPct(yoyGrowthPct), true);
+      hgSetText("kpiAvgGrowthYear", `vs ${prevYear.season_year}`);
+      hgSetText("kpiAvgGrowthLabel", "YoY Growth");
+    } else {
+      // First year, no previous year to compare
+      hgSetTextWithColor("kpiAvgGrowth", "—", false);
+      hgSetTextWithColor("kpiAvgGrowthPct", "—", true);
+      hgSetText("kpiAvgGrowthYear", "First season");
+      hgSetText("kpiAvgGrowthLabel", "YoY Growth");
+    }
+  }
+
   // Filter functionality
   function hgRenderFilteredData(year, metric) {
     console.log("Filter applied - Year:", year, "Metric:", metric);
     
-    // If no year selected, show all data
+    // Default to attendance if no metric specified
+    const selectedMetric = metric || "attendance";
+    
+    // If no year selected, show all data with default attendance
     if (!year || year === "") {
       console.log("No year selected, showing all data");
-      hgRenderSoccerData();
+      if (selectedMetric === "viewership") {
+        // For viewership, we'll show filtered view with all data
+        hgFetchViewership().then(allData => {
+          // Show all-time viewership data (could be enhanced later)
+          hgRenderSoccerData();
+        }).catch(err => {
+          console.error("Failed to fetch viewership:", err);
+          hgRenderSoccerData();
+        });
+      } else {
+        hgRenderSoccerData();
+      }
       return;
-    }
-
-    // For now, only attendance metric is supported
-    if (metric && metric !== "attendance") {
-      console.log("Metric not supported yet:", metric);
-      // Still show data for the year, just with attendance
     }
 
     const yearNum = parseInt(year);
@@ -419,8 +515,36 @@ document.addEventListener("DOMContentLoaded", function () {
       return;
     }
     
-    console.log("Rendering data for year:", yearNum);
-    hgRenderSoccerData(yearNum);
+    console.log("Rendering data for year:", yearNum, "metric:", selectedMetric);
+    
+    if (selectedMetric === "viewership") {
+      // Fetch viewership data and update KPIs
+      hgFetchViewership().then(allData => {
+        hgUpdateFilteredKPIsForViewership(allData, yearNum);
+        
+        // Draw chart with all viewership data
+        const sortedData = allData
+          .map(d => ({
+            ...d,
+            value: d.total_viewership != null ? d.total_viewership : d.avg_viewership
+          }))
+          .filter(d => d.value != null)
+          .sort((a, b) => Number(a.season_year) - Number(b.season_year));
+        
+        if (sortedData.length >= 2) {
+          const chartData = sortedData.map((d) => ({
+            year: Number(d.season_year),
+            value: Number(d.value),
+          }));
+          drawAttendanceChart(chartData);
+        }
+      }).catch(err => {
+        console.error("Failed to fetch viewership:", err);
+      });
+    } else {
+      // Default to attendance
+      hgRenderSoccerData(yearNum);
+    }
   }
 
   // Update KPI display for filtered view
