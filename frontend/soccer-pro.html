@@ -104,31 +104,31 @@
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6 mb-8">
                     <div class="player-card bg-white rounded-2xl shadow-lg border border-gray-100 p-6 cursor-pointer hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 group" data-player="1">
                         <div class="bg-gradient-to-br from-indigo-100 to-purple-100 rounded-xl h-40 mb-4 flex items-center justify-center group-hover:scale-105 transition-transform overflow-hidden">
-                            <img src="images/megan-rapinoe.png" alt="Megan Rapinoe" class="w-full h-full object-cover">
+                            <img src="images/megan-rapinoe.jpeg" alt="Megan Rapinoe" class="w-full h-full object-cover">
                         </div>
                         <p class="text-gray-700 text-sm text-center font-medium" style="color: #d1d5db !important;">World Cup Champion | Olympic Gold | 63 Goals</p>
                     </div>
                     <div class="player-card bg-white rounded-2xl shadow-lg border border-gray-100 p-6 cursor-pointer hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 group" data-player="2">
                         <div class="bg-gradient-to-br from-indigo-100 to-purple-100 rounded-xl h-40 mb-4 flex items-center justify-center group-hover:scale-105 transition-transform overflow-hidden">
-                            <img src="images/alex-morgan.png" alt="Alex Morgan" class="w-full h-full object-cover">
+                            <img src="images/alex-morgan.jpeg" alt="Alex Morgan" class="w-full h-full object-cover">
                         </div>
                         <p class="text-gray-700 text-sm text-center font-medium" style="color: #d1d5db !important;">World Cup Champion | Olympic Gold | 123 Goals</p>
                     </div>
                     <div class="player-card bg-white rounded-2xl shadow-lg border border-gray-100 p-6 cursor-pointer hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 group" data-player="3">
                         <div class="bg-gradient-to-br from-indigo-100 to-purple-100 rounded-xl h-40 mb-4 flex items-center justify-center group-hover:scale-105 transition-transform overflow-hidden">
-                            <img src="images/sam-kerr.png" alt="Sam Kerr" class="w-full h-full object-cover">
+                            <img src="images/sam-kerr.jpeg" alt="Sam Kerr" class="w-full h-full object-cover">
                         </div>
                         <p class="text-gray-700 text-sm text-center font-medium" style="color: #d1d5db !important;">NWSL MVP | Golden Boot | 95 Goals</p>
                     </div>
                     <div class="player-card bg-white rounded-2xl shadow-lg border border-gray-100 p-6 cursor-pointer hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 group" data-player="4">
                         <div class="bg-gradient-to-br from-indigo-100 to-purple-100 rounded-xl h-40 mb-4 flex items-center justify-center group-hover:scale-105 transition-transform overflow-hidden">
-                            <img src="images/ada-hegerberg.png" alt="Ada Hegerberg" class="w-full h-full object-cover">
+                            <img src="images/ada.jpeg" alt="Ada Hegerberg" class="w-full h-full object-cover">
                         </div>
                         <p class="text-gray-700 text-sm text-center font-medium" style="color: #d1d5db !important;">Ballon d'Or Winner | Champions League | 78 Goals</p>
                     </div>
                     <div class="player-card bg-white rounded-2xl shadow-lg border border-gray-100 p-6 cursor-pointer hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 group" data-player="5">
                         <div class="bg-gradient-to-br from-indigo-100 to-purple-100 rounded-xl h-40 mb-4 flex items-center justify-center group-hover:scale-105 transition-transform overflow-hidden">
-                            <img src="images/marta.png" alt="Marta" class="w-full h-full object-cover">
+                            <img src="images/marta.jpeg" alt="Marta" class="w-full h-full object-cover">
                         </div>
                         <p class="text-gray-700 text-sm text-center font-medium" style="color: #d1d5db !important;">6x World Player of the Year | 115 Goals</p>
                     </div>
@@ -323,26 +323,31 @@
             const playerData = {
                 1: {
                     name: 'Megan Rapinoe',
+                    image: 'images/megan-rapinoe.png',
                     history: 'Megan Rapinoe is an American soccer icon known for her exceptional skill, leadership, and advocacy. A two-time World Cup champion (2015, 2019) and Olympic gold medalist, Rapinoe has been a vocal advocate for equal pay and LGBTQ+ rights in sports. Her iconic performances, including a hat-trick in the 2019 World Cup quarterfinals, have inspired millions.',
                     impact: 'Rapinoe\'s advocacy work has been instrumental in pushing for equal pay in women\'s soccer. Her visibility and outspokenness have helped bring mainstream attention to gender inequality in sports, leading to significant progress in compensation and treatment of women athletes.'
                 },
                 2: {
                     name: 'Alex Morgan',
+                    image: 'images/alex-morgan.png',
                     history: 'Alex Morgan is one of the most prolific goal scorers in U.S. women\'s soccer history. A two-time World Cup champion and Olympic gold medalist, Morgan has scored over 120 international goals. Known for her speed, technical ability, and clutch performances, she has been a key figure in the USWNT\'s dominance over the past decade.',
                     impact: 'Morgan\'s success on the field and her marketability have helped increase the commercial value of women\'s soccer. Her partnership deals and media presence have demonstrated the commercial viability of women\'s sports, attracting major sponsors and investment to the game.'
                 },
                 3: {
                     name: 'Sam Kerr',
+                    image: 'images/sam-kerr.png',
                     history: 'Sam Kerr is an Australian forward widely regarded as one of the best strikers in the world. The NWSL\'s all-time leading scorer and multiple-time Golden Boot winner, Kerr has excelled in leagues across the globe. Her athleticism, goal-scoring ability, and charismatic personality have made her a global star.',
                     impact: 'Kerr\'s success in multiple professional leagues has helped elevate the global profile of women\'s soccer. Her high-profile transfers and record-breaking contracts have set new standards for player compensation and demonstrated the growing value of top women\'s soccer talent.'
                 },
                 4: {
                     name: 'Ada Hegerberg',
+                    image: 'images/ada-hegerberg.png',
                     history: 'Ada Hegerberg is a Norwegian forward and the first winner of the Women\'s Ballon d\'Or in 2018. A multiple-time Champions League winner with Lyon, Hegerberg is one of the most decorated players in European women\'s soccer. Her decision to boycott the Norwegian national team to protest gender inequality brought international attention to the issue.',
                     impact: 'Hegerberg\'s boycott of the national team highlighted gender inequality in soccer and sparked important conversations about equal treatment. Her success at the club level and recognition through the Ballon d\'Or have helped raise the profile of women\'s soccer in Europe and globally.'
                 },
                 5: {
                     name: 'Marta',
+                    image: 'images/marta.png',
                     history: 'Marta Vieira da Silva, known simply as Marta, is a Brazilian forward and six-time FIFA World Player of the Year. Often called the "Pelé of women\'s soccer," Marta has scored over 115 international goals and has been a dominant force in women\'s soccer for nearly two decades. Her technical skill and creativity have inspired generations of players.',
                     impact: 'Marta\'s sustained excellence and global recognition have been crucial in establishing women\'s soccer as a legitimate professional sport. Her six World Player of the Year awards demonstrate the quality and appeal of women\'s soccer, helping to attract investment and grow the sport worldwide.'
                 }
