@@ -1,0 +1,223 @@
+{
+    "metric": "viewership",
+    "league": "NWSL",
+    "time_range": { "start_year": 2013, "end_year": 2025 },
+    "unit_notes": {
+      "avg_match_viewers": "average viewers per match (where reported)",
+      "avg_broadcast_viewers": "average viewers per broadcast (where reported)",
+      "final_viewers": "average viewers for championship match (where reported)",
+      "total_viewership": "total viewers across the season (where reported)",
+      "playoffs_total_viewers": "total viewers across playoff matches (where reported)",
+      "yoy_growth_percent": "year-over-year percent change (where reported)",
+      "streaming_growth_percent": "year-over-year percent change in streaming audience (where reported)"
+    },
+    "eras": [
+      {
+        "name": "Early Streaming Era",
+        "start_year": 2013,
+        "end_year": 2016,
+        "notes": "Games were primarily free streams on YouTube or team websites. Useful as baseline context; data is sparse."
+      },
+      {
+        "name": "National Broadcast Expansion",
+        "start_year": 2014,
+        "end_year": 2016,
+        "notes": "Initial TV distribution via ESPN/Fox, with limited match packages."
+      },
+      {
+        "name": "Lifetime / A&E Era",
+        "start_year": 2017,
+        "end_year": 2019,
+        "notes": "Three-year agreement with Lifetime; A&E took an equity stake; regular-season averages reported."
+      },
+      {
+        "name": "Modern Multi-Platform Growth",
+        "start_year": 2021,
+        "end_year": 2025,
+        "notes": "CBS + streaming platforms drive larger audiences; totals and playoff aggregates appear more often."
+      }
+    ],
+    "data_points": [
+      {
+        "year": 2013,
+        "metric_type": "avg_match_viewers",
+        "value": 7000,
+        "unit": "viewers",
+        "platform": "YouTube",
+        "notes": "Reported live views per match on YouTube (article context also mentions much lower averages earlier in season).",
+        "source_name": "Equalizer Soccer",
+        "source_url": "https://equalizersoccer.com/2013/08/14/assessing-year-1-future-of-nwsl-livestreams/"
+      },
+      {
+        "year": 2014,
+        "metric_type": "avg_broadcast_viewers",
+        "value": 144000,
+        "unit": "viewers",
+        "platform": "ESPN2",
+        "notes": "ESPN2 average viewership for its NWSL package (per Wikipedia summary of the 2014 season media deal).",
+        "source_name": "Wikipedia (2014 NWSL season / Soccer on ESPN)",
+        "source_url": "https://en.wikipedia.org/wiki/2014_National_Women%27s_Soccer_League_season"
+      },
+      {
+        "year": 2015,
+        "metric_type": "final_viewers",
+        "value": 167000,
+        "unit": "viewers",
+        "platform": "Fox Sports (FS1 / Fox Sports Go)",
+        "notes": "2015 championship final viewership figure noted in your doc; keep as a single-event data point unless you add regular-season averages.",
+        "source_name": "Needs primary article link",
+        "source_url": null
+      },
+      {
+        "year": 2017,
+        "metric_type": "final_viewers",
+        "value": 132000,
+        "unit": "viewers",
+        "platform": "Lifetime",
+        "notes": "NWSL Championship on Lifetime.",
+        "source_name": "Awful Announcing",
+        "source_url": "https://awfulannouncing.com/ratings/ratings-national-womens-soccer-league-concludes-season-lifetime-high-note.html"
+      },
+      {
+        "year": 2017,
+        "metric_type": "avg_broadcast_viewers",
+        "value": 93000,
+        "unit": "viewers",
+        "platform": "Lifetime",
+        "notes": "Average viewership across 22 regular season matches on Lifetime.",
+        "source_name": "Awful Announcing",
+        "source_url": "https://awfulannouncing.com/ratings/ratings-national-womens-soccer-league-concludes-season-lifetime-high-note.html"
+      },
+      {
+        "year": 2018,
+        "metric_type": "context_only",
+        "value": null,
+        "unit": null,
+        "platform": "Lifetime",
+        "notes": "Still under Lifetime/A&E deal. Add numeric viewership if you find a reliable 2018 average/total.",
+        "source_name": null,
+        "source_url": null
+      },
+      {
+        "year": 2019,
+        "metric_type": "avg_broadcast_viewers",
+        "value": 81000,
+        "unit": "viewers",
+        "platform": "Lifetime",
+        "notes": "Regular season average reported in your doc; add a supporting link when available.",
+        "source_name": "Needs primary article link",
+        "source_url": null
+      },
+      {
+        "year": 2019,
+        "metric_type": "playoffs_total_viewers",
+        "value": 148000,
+        "unit": "viewers",
+        "platform": "Lifetime",
+        "notes": "Playoffs total viewers (as written in your doc). Consider verifying whether this is per game vs total playoffs.",
+        "source_name": "Needs primary article link",
+        "source_url": null
+      },
+      {
+        "year": 2020,
+        "metric_type": "context_only",
+        "value": null,
+        "unit": null,
+        "platform": null,
+        "notes": "Season disruption/cancellation note in your doc (COVID-era). Mark this year as a break in time-series charts.",
+        "source_name": null,
+        "source_url": null
+      },
+      {
+        "year": 2021,
+        "metric_type": "final_viewers",
+        "value": 525000,
+        "unit": "viewers",
+        "platform": "CBS",
+        "notes": "Championship final averaged 525,000 viewers.",
+        "source_name": "Reuters",
+        "source_url": "https://www.reuters.com/lifestyle/sports/record-viewership-2021-nwsl-finale-2021-11-23/"
+      },
+      {
+        "year": 2022,
+        "metric_type": "final_viewers",
+        "value": 915000,
+        "unit": "viewers",
+        "platform": "Reported (broadcast partner not specified in your doc)",
+        "notes": "2022 final viewership number from your doc; add a supporting link for attribution.",
+        "source_name": "Needs primary article link",
+        "source_url": null
+      },
+      {
+        "year": 2023,
+        "metric_type": "yoy_growth_percent",
+        "value": 41,
+        "unit": "percent",
+        "platform": "All (reported)",
+        "notes": "Overall viewers increased by 41% (as written in your doc). Add a supporting link.",
+        "source_name": "Needs primary article link",
+        "source_url": null
+      },
+      {
+        "year": 2023,
+        "metric_type": "streaming_growth_percent",
+        "value": 83,
+        "unit": "percent",
+        "platform": "Paramount+",
+        "notes": "Streaming audience grew 83% (as written in your doc). Add a supporting link.",
+        "source_name": "Needs primary article link",
+        "source_url": null
+      },
+      {
+        "year": 2023,
+        "metric_type": "final_viewers",
+        "value": 817000,
+        "unit": "viewers",
+        "platform": "Reported (final)",
+        "notes": "Championship final viewers (as written in your doc). Add a supporting link.",
+        "source_name": "Needs primary article link",
+        "source_url": null
+      },
+      {
+        "year": 2024,
+        "metric_type": "avg_match_viewers",
+        "value": 562000,
+        "unit": "viewers",
+        "platform": "All (reported average)",
+        "notes": "Average viewership figure from your doc; add a supporting link.",
+        "source_name": "Needs primary article link",
+        "source_url": null
+      },
+      {
+        "year": 2024,
+        "metric_type": "playoffs_total_viewers",
+        "value": 4600000,
+        "unit": "viewers",
+        "platform": "All (reported playoffs)",
+        "notes": "Total playoff viewership from your doc; add a supporting link.",
+        "source_name": "Needs primary article link",
+        "source_url": null
+      },
+      {
+        "year": 2024,
+        "metric_type": "total_viewership",
+        "value": 18700000,
+        "unit": "viewers",
+        "platform": "All (reported season total)",
+        "notes": "Total viewership from your doc; add a supporting link.",
+        "source_name": "Needs primary article link",
+        "source_url": null
+      },
+      {
+        "year": 2025,
+        "metric_type": "yoy_growth_percent",
+        "value": 22,
+        "unit": "percent",
+        "platform": "All (reported)",
+        "notes": "Year-over-year growth figure from your doc; add a supporting link and clarify which measure (total? average? streaming?).",
+        "source_name": "Needs primary article link",
+        "source_url": null
+      }
+    ]
+  }
+  

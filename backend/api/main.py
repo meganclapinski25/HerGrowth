@@ -1,6 +1,7 @@
 from fastapi import FastAPI
 import psycopg2
 from fastapi.middleware.cors import CORSMiddleware
+from api.routes import viewership
 
 app = FastAPI(title ="HerGrowth API")
 
@@ -23,6 +24,8 @@ DB_CONFIG = {
     "user": "postgres",
     "password": "",  # put your password here if you use one
 }
+
+app.include_router(viewership.router, prefix="/metrics")
 
 def get_conn():
     return psycopg2.connect(**DB_CONFIG)
