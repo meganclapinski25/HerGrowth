@@ -25,7 +25,59 @@ def db_check():
         return {"metrics_count": count}
     finally:
         conn.close()
+        
+@app.get("/attendance/nwsl")
+def attendance_nwsl():
+    conn = get_conn()
+    try:
+        with conn.cursor() as cur:
+            cur.execute("""
+                SELECT
+                    season_year,
+                    MAX(CASE WHEN metric_name = 'attendance_league_avg' THEN metric_value END) AS avg_attendance,
+                    MAX(CASE WHEN metric_name = 'attendance_total' THEN metric_value END) AS total_attendance
+                FROM metrics
+                WHERE sport = 'soccer'
+                  AND level = 'NWSL'
+                  AND metric_name IN ('attendance_league_avg', 'attendance_total')
+                GROUP BY season_year
+                ORDER BY season_year;
+            """)
+            rows = cur.fetchall()
 
+        return [
+            {
+                "season_year": r[0],
+                "avg_attendance": r[1],
+                "total_attendance": r[2],
+            }
+            for r in rows
+        ]
+    finally:
+        conn.close()
+        
+@app.get("/attendance/nwsl/kpis")
+def attendance_nwsl_kpis():
+    con = get_conn()
+    try:
+        with conn.cursor() as cur:
+            cur.execute("""
+                        SELECT
+                            season_year,
+                            MAX(CASE WHEN metric_name = 'attendance_league_avg' THEN metric_value END) AS avg_attendance,
+                            MAX(CASE WHEN metric_name = 'attendance_total' THEN metric_value END) AS total_attendance)
+                        FROM metrics
+                        WHERE sport = 'soccer'
+                            AND level = 'NWSL'
+                            AND metric_name IN ('attendance_league_avg', 'attendance_total')
+                        GROUP BY season_year
+                        ORDER BY season_year;
+            """)
+            rows = cur.fetchall()
+        data = [
+            {"season_year": r[0], "avg_attendance": r[1], "total_attendance": r[2]}
+            for r in rows
+        ]
 @app.get("/")
 def root():
     return {"message": "HerGrowth API is running"}
