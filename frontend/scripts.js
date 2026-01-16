@@ -179,13 +179,28 @@ document.addEventListener("DOMContentLoaded", function () {
     return ((Number(curr) - Number(prev)) / Number(prev)) * 100;
   }
 
+  // Update chart title based on metric
+  function hgUpdateChartTitle(metric) {
+    const chartTitleEl = document.getElementById("chartTitle");
+    if (chartTitleEl) {
+      if (metric === "viewership") {
+        chartTitleEl.textContent = "Viewership Over Years";
+      } else {
+        chartTitleEl.textContent = "Attendance Over Years";
+      }
+    }
+  }
+
   // Draw attendance chart with all years
-  function drawAttendanceChart(data) {
+  function drawAttendanceChart(data, metric = "attendance") {
     const svg = document.getElementById("attendanceChart");
     if (!svg) {
       console.warn("Chart SVG not found");
       return;
     }
+    
+    // Update chart title
+    hgUpdateChartTitle(metric);
 
     if (!data || data.length === 0) {
       console.warn("No data to draw chart");
@@ -315,7 +330,7 @@ document.addEventListener("DOMContentLoaded", function () {
           }));
         
         if (chartData.length >= 2) {
-          drawAttendanceChart(chartData);
+          drawAttendanceChart(chartData, "attendance");
         }
         
         return; // Exit early, we've handled the filtered view
@@ -387,7 +402,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }));
 
         // Draw chart with all data
-        drawAttendanceChart(chartData);
+        drawAttendanceChart(chartData, "attendance");
       }
 
       console.log("HerGrowth soccer data loaded ✅");
@@ -491,19 +506,94 @@ document.addEventListener("DOMContentLoaded", function () {
     // Default to attendance if no metric specified
     const selectedMetric = metric || "attendance";
     
-    // If no year selected, show all data with default attendance
+    // If no year selected, show all data for the selected metric
     if (!year || year === "") {
-      console.log("No year selected, showing all data");
+      console.log("No year selected, showing all data for metric:", selectedMetric);
+      
       if (selectedMetric === "viewership") {
-        // For viewership, we'll show filtered view with all data
+        // Fetch all viewership data and show chart
         hgFetchViewership().then(allData => {
-          // Show all-time viewership data (could be enhanced later)
-          hgRenderSoccerData();
+          // Update KPIs to show all-time viewership summary (similar to attendance)
+          const sortedData = allData
+            .map(d => ({
+              ...d,
+              value: d.total_viewership != null ? d.total_viewership : d.avg_viewership
+            }))
+            .filter(d => d.value != null)
+            .sort((a, b) => Number(a.season_year) - Number(b.season_year));
+          
+          if (sortedData.length >= 2) {
+            const first = sortedData[0];
+            const last = sortedData[sortedData.length - 1];
+            const totalGrowth = last.value - first.value;
+            
+            // Calculate YoY growth
+            const yoy = [];
+            for (let i = 1; i < sortedData.length; i++) {
+              yoy.push(sortedData[i].value - sortedData[i - 1].value);
+            }
+            const avgYoy = yoy.length > 0 ? yoy.reduce((a, b) => a + b, 0) / yoy.length : 0;
+            
+            const peak = sortedData.reduce((max, d) => d.value > max.value ? d : max, sortedData[0]);
+            const biggestJump = sortedData.reduce((max, d, i) => {
+              if (i === 0) return max;
+              const jump = d.value - sortedData[i - 1].value;
+              return jump > max.jump ? { jump, from: sortedData[i - 1].season_year, to: d.season_year } : max;
+            }, { jump: -Infinity, from: null, to: null });
+            
+            // Update KPIs for all-time view
+            hgSetText("kpiAvgPerGameLabel", "Total Growth");
+            hgSetText("kpiTotalSeasonLabel", "Avg YoY Growth");
+            hgSetText("kpiGrowthSeasonLabel", "Peak Year");
+            hgSetText("kpiAvgGrowthLabel", "Biggest Jump");
+            
+            hgSetText("kpiAvgPerGame", hgFormatNumber(totalGrowth));
+            hgSetText("kpiAvgPerGameYear", `${first.season_year} - ${last.season_year}`);
+            hgSetText("kpiTotalSeason", hgFormatNumber(Math.round(avgYoy)));
+            hgSetText("kpiTotalSeasonYear", "Average across all years");
+            
+            const peakYearEl = document.getElementById("kpiGrowthSeason");
+            if (peakYearEl) {
+              peakYearEl.textContent = peak.season_year ?? "—";
+              peakYearEl.style.color = "#f9fafb";
+            }
+            hgSetText("kpiGrowthSeasonYear", "");
+            hgSetText("kpiGrowthSeasonPct", "");
+            
+            if (biggestJump.from) {
+              const biggestJumpEl = document.getElementById("kpiAvgGrowth");
+              if (biggestJumpEl) {
+                biggestJumpEl.textContent = `${biggestJump.from}→${biggestJump.to}`;
+                biggestJumpEl.style.color = "#f9fafb";
+              }
+              const prevVal = sortedData.find(d => Number(d.season_year) === biggestJump.from)?.value;
+              const currVal = sortedData.find(d => Number(d.season_year) === biggestJump.to)?.value;
+              if (prevVal && currVal) {
+                hgSetTextWithColor("kpiAvgGrowthPct", hgFormatPct(hgPctChange(prevVal, currVal)), true);
+              } else {
+                hgSetTextWithColor("kpiAvgGrowthPct", "—", true);
+              }
+            } else {
+              const biggestJumpEl2 = document.getElementById("kpiAvgGrowth");
+              if (biggestJumpEl2) {
+                biggestJumpEl2.textContent = "—";
+                biggestJumpEl2.style.color = "#f9fafb";
+              }
+              hgSetTextWithColor("kpiAvgGrowthPct", "—", true);
+            }
+            
+            // Draw chart with all viewership data
+            const chartData = sortedData.map((d) => ({
+              year: Number(d.season_year),
+              value: Number(d.value),
+            }));
+            drawAttendanceChart(chartData, "viewership");
+          }
         }).catch(err => {
           console.error("Failed to fetch viewership:", err);
-          hgRenderSoccerData();
         });
       } else {
+        // Default to attendance
         hgRenderSoccerData();
       }
       return;
@@ -522,7 +612,7 @@ document.addEventListener("DOMContentLoaded", function () {
       hgFetchViewership().then(allData => {
         hgUpdateFilteredKPIsForViewership(allData, yearNum);
         
-        // Draw chart with all viewership data
+        // Draw chart with all viewership data (chart always shows all years)
         const sortedData = allData
           .map(d => ({
             ...d,
@@ -536,7 +626,7 @@ document.addEventListener("DOMContentLoaded", function () {
             year: Number(d.season_year),
             value: Number(d.value),
           }));
-          drawAttendanceChart(chartData);
+          drawAttendanceChart(chartData, "viewership");
         }
       }).catch(err => {
         console.error("Failed to fetch viewership:", err);
