@@ -4,6 +4,8 @@ import chardet
 import psycopg2
 from psycopg2.extras import execute_values
 
+
+
 DB_CONFIG = {
     "host": "localhost",
     "port": 2345,
