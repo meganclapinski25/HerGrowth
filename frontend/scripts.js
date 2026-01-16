@@ -131,6 +131,47 @@ document.addEventListener("DOMContentLoaded", function () {
     el.textContent = value;
   }
 
+  function hgSetTextWithColor(id, value, isPercentage = false) {
+    const el = document.getElementById(id);
+    if (!el) return;
+    el.textContent = value;
+    
+    // Remove existing color classes
+    el.classList.remove("text-green-600", "text-red-600", "text-gray-900");
+    
+    // If value is "—" or empty, use default color
+    if (value === "—" || value === "" || value === null || value === undefined) {
+      el.classList.add("text-gray-900");
+      return;
+    }
+    
+    // Parse the numeric value
+    let numValue = null;
+    if (isPercentage) {
+      // For percentages, extract the number (remove +, %, etc.)
+      const match = String(value).match(/([+-]?\d+\.?\d*)/);
+      if (match) {
+        numValue = parseFloat(match[1]);
+      }
+    } else {
+      // For absolute values, try to parse directly
+      numValue = parseFloat(String(value).replace(/,/g, ""));
+    }
+    
+    // Apply color based on sign
+    if (numValue !== null && !isNaN(numValue)) {
+      if (numValue < 0) {
+        el.classList.add("text-red-600");
+      } else if (numValue > 0) {
+        el.classList.add("text-green-600");
+      } else {
+        el.classList.add("text-gray-900");
+      }
+    } else {
+      el.classList.add("text-gray-900");
+    }
+  }
+
   function hgPctChange(prev, curr) {
     if (prev === null || prev === undefined) return null;
     if (curr === null || curr === undefined) return null;
@@ -202,13 +243,13 @@ document.addEventListener("DOMContentLoaded", function () {
         const prev = allDataForJump.find(d => Number(d.season_year) === kpis.biggest_jump.from_year);
         const curr = allDataForJump.find(d => Number(d.season_year) === kpis.biggest_jump.to_year);
         if (prev && curr) {
-          hgSetText("kpiAvgGrowthPct", hgFormatPct(hgPctChange(prev.total_attendance, curr.total_attendance)));
+          hgSetTextWithColor("kpiAvgGrowthPct", hgFormatPct(hgPctChange(prev.total_attendance, curr.total_attendance)), true);
         } else {
-          hgSetText("kpiAvgGrowthPct", "—");
+          hgSetTextWithColor("kpiAvgGrowthPct", "—", true);
         }
       } else {
         hgSetText("kpiAvgGrowth", "—");
-        hgSetText("kpiAvgGrowthPct", "—");
+        hgSetTextWithColor("kpiAvgGrowthPct", "—", true);
       }
 
       // percent KPIs computed from series
@@ -299,41 +340,41 @@ document.addEventListener("DOMContentLoaded", function () {
     hgSetText("kpiTotalSeasonYear", `Season ${year}`);
     hgSetText("kpiTotalSeasonLabel", "Total for Season");
 
-    // 3. Total Growth (from first year to selected year)
-    if (sortedData.length > 0) {
-      const firstYear = sortedData[0];
-      const totalGrowth = yearData.total_attendance - firstYear.total_attendance;
-      const totalGrowthPct = hgPctChange(firstYear.total_attendance, yearData.total_attendance);
-      
-      hgSetText("kpiGrowthSeason", hgFormatNumber(totalGrowth));
-      hgSetText("kpiGrowthSeasonPct", hgFormatPct(totalGrowthPct));
-      hgSetText("kpiGrowthSeasonYear", `Since ${firstYear.season_year}`);
-      hgSetText("kpiGrowthSeasonLabel", "Total Growth");
-    } else {
-      hgSetText("kpiGrowthSeason", "—");
-      hgSetText("kpiGrowthSeasonPct", "—");
-      hgSetText("kpiGrowthSeasonYear", "No data");
-      hgSetText("kpiGrowthSeasonLabel", "Total Growth");
-    }
+      // 3. Total Growth (from first year to selected year)
+      if (sortedData.length > 0) {
+        const firstYear = sortedData[0];
+        const totalGrowth = yearData.total_attendance - firstYear.total_attendance;
+        const totalGrowthPct = hgPctChange(firstYear.total_attendance, yearData.total_attendance);
+        
+        hgSetTextWithColor("kpiGrowthSeason", hgFormatNumber(totalGrowth), false);
+        hgSetTextWithColor("kpiGrowthSeasonPct", hgFormatPct(totalGrowthPct), true);
+        hgSetText("kpiGrowthSeasonYear", `Since ${firstYear.season_year}`);
+        hgSetText("kpiGrowthSeasonLabel", "Total Growth");
+      } else {
+        hgSetTextWithColor("kpiGrowthSeason", "—", false);
+        hgSetTextWithColor("kpiGrowthSeasonPct", "—", true);
+        hgSetText("kpiGrowthSeasonYear", "No data");
+        hgSetText("kpiGrowthSeasonLabel", "Total Growth");
+      }
 
-    // 4. YoY Growth (Year-over-Year growth for that specific year)
-    const currentIndex = sortedData.findIndex(d => Number(d.season_year) === year);
-    if (currentIndex > 0) {
-      const prevYear = sortedData[currentIndex - 1];
-      const yoyGrowth = yearData.total_attendance - prevYear.total_attendance;
-      const yoyGrowthPct = hgPctChange(prevYear.total_attendance, yearData.total_attendance);
-      
-      hgSetText("kpiAvgGrowth", hgFormatNumber(yoyGrowth));
-      hgSetText("kpiAvgGrowthPct", hgFormatPct(yoyGrowthPct));
-      hgSetText("kpiAvgGrowthYear", `vs ${prevYear.season_year}`);
-      hgSetText("kpiAvgGrowthLabel", "YoY Growth");
-    } else {
-      // First year, no previous year to compare
-      hgSetText("kpiAvgGrowth", "—");
-      hgSetText("kpiAvgGrowthPct", "—");
-      hgSetText("kpiAvgGrowthYear", "First season");
-      hgSetText("kpiAvgGrowthLabel", "YoY Growth");
-    }
+      // 4. YoY Growth (Year-over-Year growth for that specific year)
+      const currentIndex = sortedData.findIndex(d => Number(d.season_year) === year);
+      if (currentIndex > 0) {
+        const prevYear = sortedData[currentIndex - 1];
+        const yoyGrowth = yearData.total_attendance - prevYear.total_attendance;
+        const yoyGrowthPct = hgPctChange(prevYear.total_attendance, yearData.total_attendance);
+        
+        hgSetTextWithColor("kpiAvgGrowth", hgFormatNumber(yoyGrowth), false);
+        hgSetTextWithColor("kpiAvgGrowthPct", hgFormatPct(yoyGrowthPct), true);
+        hgSetText("kpiAvgGrowthYear", `vs ${prevYear.season_year}`);
+        hgSetText("kpiAvgGrowthLabel", "YoY Growth");
+      } else {
+        // First year, no previous year to compare
+        hgSetTextWithColor("kpiAvgGrowth", "—", false);
+        hgSetTextWithColor("kpiAvgGrowthPct", "—", true);
+        hgSetText("kpiAvgGrowthYear", "First season");
+        hgSetText("kpiAvgGrowthLabel", "YoY Growth");
+      }
   }
 
 
