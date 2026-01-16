@@ -138,23 +138,31 @@ document.addEventListener("DOMContentLoaded", function () {
     return ((Number(curr) - Number(prev)) / Number(prev)) * 100;
   }
 
-  async function hgFetchAttendance() {
-    const res = await fetch(`${API_BASE}/attendance/nwsl`);
+  async function hgFetchAttendance(year = null) {
+    const url = year 
+      ? `${API_BASE}/attendance/nwsl?year=${year}`
+      : `${API_BASE}/attendance/nwsl`;
+    const res = await fetch(url);
     if (!res.ok) throw new Error(`API error: ${res.status}`);
     return await res.json();
   }
 
-  async function hgFetchKpis() {
-    const res = await fetch(`${API_BASE}/attendance/nwsl/kpis`);
+  async function hgFetchKpis(year = null) {
+    const url = year 
+      ? `${API_BASE}/attendance/nwsl/kpis?year=${year}`
+      : `${API_BASE}/attendance/nwsl/kpis`;
+    const res = await fetch(url);
     if (!res.ok) throw new Error(`API error: ${res.status}`);
     return await res.json();
   }
 
-  async function hgRenderSoccerData() {
+
+  // Main render function - supports filtering by year
+  async function hgRenderSoccerData(year = null) {
     try {
       const [series, kpis] = await Promise.all([
-        hgFetchAttendance(),
-        hgFetchKpis(),
+        hgFetchAttendance(year),
+        hgFetchKpis(year),
       ]);
 
       if (kpis?.error) {
@@ -162,74 +170,61 @@ document.addEventListener("DOMContentLoaded", function () {
         return;
       }
 
-      // absolute KPIs
-      hgSetText("kpiTotalGrowth", hgFormatNumber(kpis.total_growth));
-      hgSetText("kpiAvgYoY", hgFormatNumber(kpis.avg_yoy_growth));
-      hgSetText("kpiPeakYear", kpis.peak_year ?? "—");
+      // If year is specified, show filtered view
+      if (year) {
+        // Get all data for comparison
+        const allData = await hgFetchAttendance();
+        hgUpdateFilteredKPIs(allData, year);
+      } else {
+        // Show all-time view (original behavior)
+        hgSetText("kpiAvgPerGameLabel", "Total Growth");
+        hgSetText("kpiTotalSeasonLabel", "Avg YoY Growth");
+        hgSetText("kpiGrowthSeasonLabel", "Peak Year");
+        hgSetText("kpiAvgGrowthLabel", "Biggest Jump");
 
-      if (kpis.biggest_jump) {
-        hgSetText(
-          "kpiBiggestJumpYear",
-          `${kpis.biggest_jump.from_year}→${kpis.biggest_jump.to_year}`
-        );
-      }
-
-      // percent KPIs computed from series
-      const totals = series
-        .filter((r) => r.total_attendance != null)
-        .sort((a, b) => Number(a.season_year) - Number(b.season_year));
-
-      if (totals.length >= 2) {
-        const first = totals[0].total_attendance;
-        const last = totals[totals.length - 1].total_attendance;
-
-        hgSetText("kpiTotalGrowthPct", hgFormatPct(hgPctChange(first, last)));
-
-        const yoyPcts = [];
-        for (let i = 1; i < totals.length; i++) {
-          const p = hgPctChange(
-            totals[i - 1].total_attendance,
-            totals[i].total_attendance
-          );
-          if (p !== null) yoyPcts.push(p);
-        }
-
-        const avgPct =
-          yoyPcts.length > 0
-            ? yoyPcts.reduce((a, b) => a + b, 0) / yoyPcts.length
-            : null;
-
-        hgSetText("kpiAvgYoYPct", hgFormatPct(avgPct));
+        // absolute KPIs
+        hgSetText("kpiAvgPerGame", hgFormatNumber(kpis.total_growth));
+        hgSetText("kpiAvgPerGameYear", `${kpis.range.start_year} - ${kpis.range.end_year}`);
+        hgSetText("kpiTotalSeason", hgFormatNumber(kpis.avg_yoy_growth));
+        hgSetText("kpiTotalSeasonYear", "Average across all years");
+        hgSetText("kpiGrowthSeason", kpis.peak_year ?? "—");
+        hgSetText("kpiGrowthSeasonYear", "");
+        hgSetText("kpiGrowthSeasonPct", "");
 
         if (kpis.biggest_jump) {
-          const prev = totals.find(
-            (r) => Number(r.season_year) === Number(kpis.biggest_jump.from_year)
-          );
-          const curr = totals.find(
-            (r) => Number(r.season_year) === Number(kpis.biggest_jump.to_year)
-          );
+          hgSetText("kpiAvgGrowth", `${kpis.biggest_jump.from_year}→${kpis.biggest_jump.to_year}`);
+          const allDataForJump = await hgFetchAttendance();
+          const prev = allDataForJump.find(d => Number(d.season_year) === kpis.biggest_jump.from_year);
+          const curr = allDataForJump.find(d => Number(d.season_year) === kpis.biggest_jump.to_year);
           if (prev && curr) {
-            hgSetText(
-              "kpiBiggestJumpPct",
-              hgFormatPct(
-                hgPctChange(prev.total_attendance, curr.total_attendance)
-              )
-            );
+            hgSetText("kpiAvgGrowthPct", hgFormatPct(hgPctChange(prev.total_attendance, curr.total_attendance)));
+          } else {
+            hgSetText("kpiAvgGrowthPct", "—");
           }
+        } else {
+          hgSetText("kpiAvgGrowth", "—");
+          hgSetText("kpiAvgGrowthPct", "—");
         }
 
-        // chart data last 7
-        const chartData = totals.map((d) => ({
-          year: Number(d.season_year),
-          value: Number(d.total_attendance),
-        }));
+        // percent KPIs computed from series
+        const totals = series
+          .filter((r) => r.total_attendance != null)
+          .sort((a, b) => Number(a.season_year) - Number(b.season_year));
 
-        const lastSeven = chartData.slice(-7);
+        if (totals.length >= 2) {
+          // chart data last 7
+          const chartData = totals.map((d) => ({
+            year: Number(d.season_year),
+            value: Number(d.total_attendance),
+          }));
 
-        if (typeof drawAttendanceChart === "function") {
-          drawAttendanceChart(lastSeven);
-        } else {
-          console.warn("drawAttendanceChart is not defined yet.");
+          const lastSeven = chartData.slice(-7);
+
+          if (typeof drawAttendanceChart === "function") {
+            drawAttendanceChart(lastSeven);
+          } else {
+            console.warn("drawAttendanceChart is not defined yet.");
+          }
         }
       }
 
@@ -239,8 +234,153 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 
+  // Filter functionality
+  function hgRenderFilteredData(year, metric) {
+    if (!year || metric !== "attendance") {
+      // If no year selected or metric is not attendance, show all data
+      hgRenderSoccerData();
+      return;
+    }
+
+    const yearNum = parseInt(year);
+    hgRenderSoccerData(yearNum);
+  }
+
+  // Update KPI display for filtered view
+  function hgUpdateFilteredKPIs(data, year) {
+    if (!data || data.length === 0) {
+      console.warn("No data for year:", year);
+      return;
+    }
+
+    const yearData = data.find(d => Number(d.season_year) === year);
+    if (!yearData) {
+      console.warn("Year data not found:", year);
+      return;
+    }
+
+    // Average per game
+    hgSetText("kpiAvgPerGame", hgFormatNumber(yearData.avg_attendance));
+    hgSetText("kpiAvgPerGameYear", `Season ${year}`);
+    hgSetText("kpiAvgPerGameLabel", "Average Per Game");
+
+    // Total for season
+    hgSetText("kpiTotalSeason", hgFormatNumber(yearData.total_attendance));
+    hgSetText("kpiTotalSeasonYear", `Season ${year}`);
+    hgSetText("kpiTotalSeasonLabel", "Total for Season");
+
+    // Growth this season (compared to previous year)
+    const sortedData = data
+      .filter(d => d.total_attendance != null)
+      .sort((a, b) => Number(a.season_year) - Number(b.season_year));
+    
+    const currentIndex = sortedData.findIndex(d => Number(d.season_year) === year);
+    if (currentIndex > 0) {
+      const prevYear = sortedData[currentIndex - 1];
+      const growth = yearData.total_attendance - prevYear.total_attendance;
+      const growthPct = hgPctChange(prevYear.total_attendance, yearData.total_attendance);
+      
+      hgSetText("kpiGrowthSeason", hgFormatNumber(growth));
+      hgSetText("kpiGrowthSeasonPct", hgFormatPct(growthPct));
+      hgSetText("kpiGrowthSeasonYear", `vs ${prevYear.season_year}`);
+      hgSetText("kpiGrowthSeasonLabel", "Growth This Season");
+    } else {
+      hgSetText("kpiGrowthSeason", "—");
+      hgSetText("kpiGrowthSeasonPct", "—");
+      hgSetText("kpiGrowthSeasonYear", "First season");
+      hgSetText("kpiGrowthSeasonLabel", "Growth This Season");
+    }
+
+    // Average growth (calculate from all data)
+    if (sortedData.length >= 2) {
+      const yoyPcts = [];
+      for (let i = 1; i < sortedData.length; i++) {
+        const p = hgPctChange(
+          sortedData[i - 1].total_attendance,
+          sortedData[i].total_attendance
+        );
+        if (p !== null) yoyPcts.push(p);
+      }
+      const avgPct = yoyPcts.length > 0
+        ? yoyPcts.reduce((a, b) => a + b, 0) / yoyPcts.length
+        : null;
+      
+      const avgGrowth = sortedData.length > 1
+        ? (sortedData[sortedData.length - 1].total_attendance - sortedData[0].total_attendance) / (sortedData.length - 1)
+        : null;
+
+      hgSetText("kpiAvgGrowth", hgFormatNumber(avgGrowth));
+      hgSetText("kpiAvgGrowthPct", hgFormatPct(avgPct));
+      hgSetText("kpiAvgGrowthLabel", "Average Growth");
+    }
+  }
+
+
+  // Populate year dropdown dynamically
+  async function hgPopulateYearDropdown() {
+    const yearFilter = document.getElementById("yearFilter");
+    if (!yearFilter) return;
+
+    try {
+      const data = await hgFetchAttendance();
+      const years = data
+        .map(d => Number(d.season_year))
+        .filter(y => !isNaN(y))
+        .sort((a, b) => b - a); // Descending order
+
+      // Clear existing options except "Total (All Years)"
+      yearFilter.innerHTML = '<option value="">Total (All Years)</option>';
+      
+      // Add year options
+      years.forEach(year => {
+        const option = document.createElement("option");
+        option.value = year;
+        option.textContent = year;
+        yearFilter.appendChild(option);
+      });
+    } catch (err) {
+      console.error("Failed to populate year dropdown:", err);
+    }
+  }
+
+  // Set up metric filter selection
+  function hgSetupMetricFilters() {
+    const metricFilters = document.querySelectorAll(".metric-filter");
+    metricFilters.forEach(button => {
+      button.addEventListener("click", function() {
+        // Only allow one metric selected at a time
+        metricFilters.forEach(btn => {
+          btn.classList.remove("selected", "bg-indigo-600", "text-white", "shadow-md");
+          btn.classList.add("bg-gray-100", "text-gray-700");
+        });
+        
+        // Select clicked button
+        this.classList.add("selected", "bg-indigo-600", "text-white", "shadow-md");
+        this.classList.remove("bg-gray-100", "text-gray-700");
+      });
+    });
+  }
+
   // auto-run only on soccer page (KPI section exists)
-  if (document.getElementById("kpiTotalGrowth")) {
+  if (document.getElementById("kpiAvgPerGame")) {
     hgRenderSoccerData();
+    hgPopulateYearDropdown();
+    hgSetupMetricFilters();
+    
+    // Set up filter button handler
+    const applyButton = document.getElementById("applyFilter");
+    const yearFilter = document.getElementById("yearFilter");
+    
+    if (applyButton) {
+      applyButton.addEventListener("click", function() {
+        const selectedYear = yearFilter.value;
+        const selectedMetric = document.querySelector(".metric-filter.selected");
+        const metric = selectedMetric 
+          ? selectedMetric.getAttribute("data-metric") 
+          : "attendance";
+        
+        hgRenderFilteredData(selectedYear, metric);
+      });
+    }
   }
 });

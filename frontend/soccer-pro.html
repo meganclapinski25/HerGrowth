@@ -207,40 +207,44 @@
                 
                 <!-- KPI Cards Grid -->
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <!-- Total Growth Card -->
+                    <!-- Average Per Game Card -->
                     <div class="bg-gradient-to-br from-indigo-50 to-purple-50 rounded-2xl p-8 border border-indigo-100 shadow-lg hover:shadow-xl transition-shadow duration-300">
-                        <h3 class="text-gray-700 font-semibold mb-4 text-lg">Total Growth</h3>
+                        <h3 class="text-gray-700 font-semibold mb-4 text-lg" id="kpiAvgPerGameLabel">Average Per Game</h3>
                         <div class="flex items-baseline gap-3">
-                        <span id="kpiTotalGrowth" class="text-5xl font-bold text-gray-900">—</span>
-                        <span id="kpiTotalGrowthPct" class="text-2xl text-green-600 font-bold">—</span>
+                            <span id="kpiAvgPerGame" class="text-5xl font-bold text-gray-900">—</span>
+                            <span class="text-lg text-gray-600 font-medium">people</span>
                         </div>
-                    </div>
-  
-
-                    <!-- Avg YoY Growth Card -->
-                    <div class="bg-gradient-to-br from-indigo-50 to-purple-50 rounded-2xl p-8 border border-indigo-100 shadow-lg hover:shadow-xl transition-shadow duration-300">
-                        <h3 class="text-gray-700 font-semibold mb-4 text-lg">Avg YoY Growth</h3>
-                        <div class="flex items-baseline gap-3">
-                            <span id="kpiAvgYoY" class="text-5xl font-bold text-gray-900">—</span>
-                            <span id="kpiAvgYoYPct" class="text-2xl text-green-600 font-bold">—</span>
-                        </div>
+                        <p class="text-sm text-gray-500 mt-2" id="kpiAvgPerGameYear"></p>
                     </div>
 
-                    <!-- Peak Year Card -->
+                    <!-- Total for Season Card -->
                     <div class="bg-gradient-to-br from-indigo-50 to-purple-50 rounded-2xl p-8 border border-indigo-100 shadow-lg hover:shadow-xl transition-shadow duration-300">
-                        <h3 class="text-gray-700 font-semibold mb-4 text-lg">Peak Year</h3>
+                        <h3 class="text-gray-700 font-semibold mb-4 text-lg" id="kpiTotalSeasonLabel">Total for Season</h3>
                         <div class="flex items-baseline gap-3">
-                            <span id="kpiPeakYear" class="text-5xl font-bold text-indigo-600">—</span>
+                            <span id="kpiTotalSeason" class="text-5xl font-bold text-gray-900">—</span>
+                            <span class="text-lg text-gray-600 font-medium">people</span>
                         </div>
+                        <p class="text-sm text-gray-500 mt-2" id="kpiTotalSeasonYear"></p>
                     </div>
 
-                    <!-- Biggest Jump Card -->
+                    <!-- Growth This Season Card -->
                     <div class="bg-gradient-to-br from-indigo-50 to-purple-50 rounded-2xl p-8 border border-indigo-100 shadow-lg hover:shadow-xl transition-shadow duration-300">
-                        <h3 class="text-gray-700 font-semibold mb-4 text-lg">Biggest Jump</h3>
+                        <h3 class="text-gray-700 font-semibold mb-4 text-lg" id="kpiGrowthSeasonLabel">Growth This Season</h3>
                         <div class="flex items-baseline gap-3">
-                            <span id="kpiBiggestJumpYear" class="text-5xl font-bold text-indigo-600">—</span>
-                            <span id="kpiBiggestJumpPct" class="text-2xl text-green-600 font-bold">—</span>
+                            <span id="kpiGrowthSeason" class="text-5xl font-bold text-gray-900">—</span>
+                            <span id="kpiGrowthSeasonPct" class="text-2xl text-green-600 font-bold">—</span>
                         </div>
+                        <p class="text-sm text-gray-500 mt-2" id="kpiGrowthSeasonYear"></p>
+                    </div>
+
+                    <!-- Average Growth Card -->
+                    <div class="bg-gradient-to-br from-indigo-50 to-purple-50 rounded-2xl p-8 border border-indigo-100 shadow-lg hover:shadow-xl transition-shadow duration-300">
+                        <h3 class="text-gray-700 font-semibold mb-4 text-lg" id="kpiAvgGrowthLabel">Average Growth</h3>
+                        <div class="flex items-baseline gap-3">
+                            <span id="kpiAvgGrowth" class="text-5xl font-bold text-gray-900">—</span>
+                            <span id="kpiAvgGrowthPct" class="text-2xl text-green-600 font-bold">—</span>
+                        </div>
+                        <p class="text-sm text-gray-500 mt-2">Across all seasons</p>
                     </div>
                 </div>
             </div>
@@ -389,37 +393,7 @@
                 });
             });
 
-            // Metric filter selection
-            const metricFilters = document.querySelectorAll('.metric-filter');
-            metricFilters.forEach(button => {
-                button.addEventListener('click', function() {
-                    // Toggle selection
-                    if (this.classList.contains('selected')) {
-                        this.classList.remove('selected', 'bg-indigo-600', 'text-white', 'shadow-md');
-                        this.classList.add('bg-gray-100', 'text-gray-700');
-                    } else {
-                        this.classList.add('selected', 'bg-indigo-600', 'text-white', 'shadow-md');
-                        this.classList.remove('bg-gray-100', 'text-gray-700');
-                    }
-                });
-            });
-
-            // Apply filter button
-            const applyButton = document.getElementById('applyFilter');
-            const yearFilter = document.getElementById('yearFilter');
-            
-            applyButton.addEventListener('click', function() {
-                const selectedYear = yearFilter.value;
-                const selectedMetrics = Array.from(metricFilters)
-                    .filter(btn => btn.classList.contains('selected'))
-                    .map(btn => btn.getAttribute('data-metric'));
-                
-                console.log('Year:', selectedYear || 'Total');
-                console.log('Metrics:', selectedMetrics);
-                
-                // Here you would update the KPI cards based on the filters
-                // For now, just log the selections
-            });
+            // Metric filter selection (handled in scripts.js)
         
         });
 
