@@ -179,6 +179,102 @@ document.addEventListener("DOMContentLoaded", function () {
     return ((Number(curr) - Number(prev)) / Number(prev)) * 100;
   }
 
+  // Draw attendance chart with all years
+  function drawAttendanceChart(data) {
+    const svg = document.getElementById("attendanceChart");
+    if (!svg) {
+      console.warn("Chart SVG not found");
+      return;
+    }
+
+    if (!data || data.length === 0) {
+      console.warn("No data to draw chart");
+      return;
+    }
+
+    // Chart dimensions
+    const padding = { top: 50, right: 60, bottom: 50, left: 60 };
+    const width = 800;
+    const height = 400;
+    const chartWidth = width - padding.left - padding.right;
+    const chartHeight = height - padding.top - padding.bottom;
+
+    // Clear existing dynamic elements (keep defs and static elements)
+    const existingElements = svg.querySelectorAll("#areaPath, #linePath, .data-point, .year-label, .grid-line");
+    existingElements.forEach(el => el.remove());
+
+    // Find min/max values for scaling
+    const values = data.map(d => d.value);
+    const minValue = Math.min(...values);
+    const maxValue = Math.max(...values);
+    const valueRange = maxValue - minValue || 1; // Avoid division by zero
+
+    // Scale functions
+    const xScale = (index) => padding.left + (index / (data.length - 1)) * chartWidth;
+    const yScale = (value) => padding.top + chartHeight - ((value - minValue) / valueRange) * chartHeight;
+
+    // Create area path
+    let areaPath = `M ${xScale(0)} ${yScale(0)} L ${xScale(0)} ${height - padding.bottom}`;
+    let linePath = `M ${xScale(0)} ${yScale(data[0].value)}`;
+
+    data.forEach((d, i) => {
+      const x = xScale(i);
+      const y = yScale(d.value);
+      areaPath += ` L ${x} ${y}`;
+      linePath += ` L ${x} ${y}`;
+    });
+
+    areaPath += ` L ${xScale(data.length - 1)} ${height - padding.bottom} Z`;
+    
+    // Create area path element
+    const areaPathEl = document.createElementNS("http://www.w3.org/2000/svg", "path");
+    areaPathEl.setAttribute("id", "areaPath");
+    areaPathEl.setAttribute("d", areaPath);
+    areaPathEl.setAttribute("fill", "url(#areaGradient)");
+    areaPathEl.setAttribute("stroke", "none");
+    svg.appendChild(areaPathEl);
+
+    // Create line path element
+    const linePathEl = document.createElementNS("http://www.w3.org/2000/svg", "path");
+    linePathEl.setAttribute("id", "linePath");
+    linePathEl.setAttribute("d", linePath);
+    linePathEl.setAttribute("fill", "none");
+    linePathEl.setAttribute("stroke", "#1f2937");
+    linePathEl.setAttribute("stroke-width", "3");
+    linePathEl.setAttribute("stroke-linecap", "round");
+    linePathEl.setAttribute("stroke-linejoin", "round");
+    svg.appendChild(linePathEl);
+
+    // Draw data points and year labels
+    data.forEach((d, i) => {
+      const x = xScale(i);
+      const y = yScale(d.value);
+
+      // Data point circle
+      const circle = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+      circle.setAttribute("class", "data-point");
+      circle.setAttribute("cx", x);
+      circle.setAttribute("cy", y);
+      circle.setAttribute("r", "4");
+      circle.setAttribute("fill", "#1f2937");
+      svg.appendChild(circle);
+
+      // Year label
+      const yearLabel = document.createElementNS("http://www.w3.org/2000/svg", "text");
+      yearLabel.setAttribute("class", "year-label");
+      yearLabel.setAttribute("x", x);
+      yearLabel.setAttribute("y", height - padding.bottom + 20);
+      yearLabel.setAttribute("fill", "#6b7280");
+      yearLabel.setAttribute("font-size", "12");
+      yearLabel.setAttribute("font-family", "Poppins");
+      yearLabel.setAttribute("text-anchor", "middle");
+      yearLabel.textContent = d.year;
+      svg.appendChild(yearLabel);
+    });
+
+    console.log("Chart drawn with", data.length, "data points");
+  }
+
   async function hgFetchAttendance(year = null) {
     const url = year 
       ? `${API_BASE}/attendance/nwsl?year=${year}`
@@ -208,6 +304,20 @@ document.addEventListener("DOMContentLoaded", function () {
         const allData = await hgFetchAttendance();
         console.log("All data fetched:", allData);
         hgUpdateFilteredKPIs(allData, year);
+        
+        // Draw chart with all years (chart always shows all data)
+        const chartData = allData
+          .filter(d => d.total_attendance != null)
+          .sort((a, b) => Number(a.season_year) - Number(b.season_year))
+          .map(d => ({
+            year: Number(d.season_year),
+            value: Number(d.total_attendance),
+          }));
+        
+        if (chartData.length >= 2) {
+          drawAttendanceChart(chartData);
+        }
+        
         return; // Exit early, we've handled the filtered view
       }
       
@@ -258,19 +368,14 @@ document.addEventListener("DOMContentLoaded", function () {
         .sort((a, b) => Number(a.season_year) - Number(b.season_year));
 
       if (totals.length >= 2) {
-        // chart data last 7
+        // chart data - use ALL years
         const chartData = totals.map((d) => ({
           year: Number(d.season_year),
           value: Number(d.total_attendance),
         }));
 
-        const lastSeven = chartData.slice(-7);
-
-        if (typeof drawAttendanceChart === "function") {
-          drawAttendanceChart(lastSeven);
-        } else {
-          console.warn("drawAttendanceChart is not defined yet.");
-        }
+        // Draw chart with all data
+        drawAttendanceChart(chartData);
       }
 
       console.log("HerGrowth soccer data loaded ✅");
