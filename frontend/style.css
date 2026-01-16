@@ -101,6 +101,17 @@ body > * {
     color: #f9fafb !important;
 }
 
+/* Player dropdown text colors */
+#playerDropdown h2,
+#playerDropdown h3,
+#playerDropdown h4 {
+    color: #ffffff !important;
+}
+
+#playerDropdown p {
+    color: #d1d5db !important;
+}
+
 /* Update gradient backgrounds for dark theme */
 .bg-gradient-to-br.from-indigo-50.to-purple-50,
 .bg-gradient-to-br.from-indigo-100.to-purple-100 {

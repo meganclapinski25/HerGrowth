@@ -103,32 +103,32 @@
                 <!-- Player Cards Grid -->
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6 mb-8">
                     <div class="player-card bg-white rounded-2xl shadow-lg border border-gray-100 p-6 cursor-pointer hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 group" data-player="1">
-                        <div class="bg-gradient-to-br from-indigo-100 to-purple-100 rounded-xl h-40 mb-4 flex items-center justify-center group-hover:scale-105 transition-transform">
-                            <span class="text-indigo-600 font-semibold" style="color: #60a5fa !important;">Megan Rapinoe</span>
+                        <div class="bg-gradient-to-br from-indigo-100 to-purple-100 rounded-xl h-40 mb-4 flex items-center justify-center group-hover:scale-105 transition-transform overflow-hidden">
+                            <img src="images/megan-rapinoe.png" alt="Megan Rapinoe" class="w-full h-full object-cover">
                         </div>
                         <p class="text-gray-700 text-sm text-center font-medium" style="color: #d1d5db !important;">World Cup Champion | Olympic Gold | 63 Goals</p>
                     </div>
                     <div class="player-card bg-white rounded-2xl shadow-lg border border-gray-100 p-6 cursor-pointer hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 group" data-player="2">
-                        <div class="bg-gradient-to-br from-indigo-100 to-purple-100 rounded-xl h-40 mb-4 flex items-center justify-center group-hover:scale-105 transition-transform">
-                            <span class="text-indigo-600 font-semibold" style="color: #60a5fa !important;">Alex Morgan</span>
+                        <div class="bg-gradient-to-br from-indigo-100 to-purple-100 rounded-xl h-40 mb-4 flex items-center justify-center group-hover:scale-105 transition-transform overflow-hidden">
+                            <img src="images/alex-morgan.png" alt="Alex Morgan" class="w-full h-full object-cover">
                         </div>
                         <p class="text-gray-700 text-sm text-center font-medium" style="color: #d1d5db !important;">World Cup Champion | Olympic Gold | 123 Goals</p>
                     </div>
                     <div class="player-card bg-white rounded-2xl shadow-lg border border-gray-100 p-6 cursor-pointer hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 group" data-player="3">
-                        <div class="bg-gradient-to-br from-indigo-100 to-purple-100 rounded-xl h-40 mb-4 flex items-center justify-center group-hover:scale-105 transition-transform">
-                            <span class="text-indigo-600 font-semibold" style="color: #60a5fa !important;">Sam Kerr</span>
+                        <div class="bg-gradient-to-br from-indigo-100 to-purple-100 rounded-xl h-40 mb-4 flex items-center justify-center group-hover:scale-105 transition-transform overflow-hidden">
+                            <img src="images/sam-kerr.png" alt="Sam Kerr" class="w-full h-full object-cover">
                         </div>
                         <p class="text-gray-700 text-sm text-center font-medium" style="color: #d1d5db !important;">NWSL MVP | Golden Boot | 95 Goals</p>
                     </div>
                     <div class="player-card bg-white rounded-2xl shadow-lg border border-gray-100 p-6 cursor-pointer hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 group" data-player="4">
-                        <div class="bg-gradient-to-br from-indigo-100 to-purple-100 rounded-xl h-40 mb-4 flex items-center justify-center group-hover:scale-105 transition-transform">
-                            <span class="text-indigo-600 font-semibold" style="color: #60a5fa !important;">Ada Hegerberg</span>
+                        <div class="bg-gradient-to-br from-indigo-100 to-purple-100 rounded-xl h-40 mb-4 flex items-center justify-center group-hover:scale-105 transition-transform overflow-hidden">
+                            <img src="images/ada-hegerberg.png" alt="Ada Hegerberg" class="w-full h-full object-cover">
                         </div>
                         <p class="text-gray-700 text-sm text-center font-medium" style="color: #d1d5db !important;">Ballon d'Or Winner | Champions League | 78 Goals</p>
                     </div>
                     <div class="player-card bg-white rounded-2xl shadow-lg border border-gray-100 p-6 cursor-pointer hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 group" data-player="5">
-                        <div class="bg-gradient-to-br from-indigo-100 to-purple-100 rounded-xl h-40 mb-4 flex items-center justify-center group-hover:scale-105 transition-transform">
-                            <span class="text-indigo-600 font-semibold" style="color: #60a5fa !important;">Marta</span>
+                        <div class="bg-gradient-to-br from-indigo-100 to-purple-100 rounded-xl h-40 mb-4 flex items-center justify-center group-hover:scale-105 transition-transform overflow-hidden">
+                            <img src="images/marta.png" alt="Marta" class="w-full h-full object-cover">
                         </div>
                         <p class="text-gray-700 text-sm text-center font-medium" style="color: #d1d5db !important;">6x World Player of the Year | 115 Goals</p>
                     </div>
@@ -137,8 +137,8 @@
 
             <!-- Dropdown Area -->
             <div id="playerDropdown" class="bg-white rounded-2xl shadow-2xl border border-gray-100 p-10 min-h-[400px] hidden animate-fadeIn">
-                <h2 class="text-3xl font-bold text-gray-900 mb-6 text-center">Player Profile</h2>
-                <div id="playerContent" class="text-gray-700">
+                <h2 class="text-3xl font-bold mb-6 text-center" style="color: #ffffff !important;">Player Profile</h2>
+                <div id="playerContent">
                     <!-- Player history content will be inserted here -->
                 </div>
             </div>
@@ -355,15 +355,15 @@
 
                     // Update dropdown content
                     playerContent.innerHTML = `
-                        <h3 class="text-xl font-semibold text-gray-800 mb-4">${player.name}</h3>
+                        <h3 class="text-xl font-semibold mb-4" style="color: #ffffff !important;">${player.name}</h3>
                         <div class="space-y-4">
                             <div>
-                                <h4 class="font-semibold text-gray-800 mb-2">History</h4>
-                                <p class="text-gray-700 leading-relaxed">${player.history}</p>
+                                <h4 class="font-semibold mb-2" style="color: #ffffff !important;">History</h4>
+                                <p class="leading-relaxed" style="color: #d1d5db !important;">${player.history}</p>
                             </div>
                             <div>
-                                <h4 class="font-semibold text-gray-800 mb-2">Impact on Women's Soccer</h4>
-                                <p class="text-gray-700 leading-relaxed">${player.impact}</p>
+                                <h4 class="font-semibold mb-2" style="color: #ffffff !important;">Impact on Women's Soccer</h4>
+                                <p class="leading-relaxed" style="color: #d1d5db !important;">${player.impact}</p>
                             </div>
                         </div>
                     `;
